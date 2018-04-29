@@ -18,7 +18,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	{
 		http
 			.authorizeRequests()
-			.antMatchers("/").permitAll()
+			.antMatchers("/resources/**", "/login").permitAll()
+			.antMatchers("/").hasAnyRole("dosen", "mahasiswa", "staf")
+			.antMatchers("/literature/**").hasAnyRole("dosen", "mahasiswa", "staf")
 			.anyRequest().authenticated()
 			.and()
 			.formLogin()
@@ -37,7 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	{
 	 auth.jdbcAuthentication().dataSource(dataSource)
 	.usersByUsernameQuery(
-	"select username,password from user_account where username=?")
+	"select username,password, 1 from user_account where username=?")
 	.authoritiesByUsernameQuery(
 	"select username, role from user_account where username=?");
 	}
