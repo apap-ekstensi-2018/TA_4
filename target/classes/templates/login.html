@@ -3,8 +3,7 @@
 xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
  <title>Login Page</title>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-		</script>
+<script src="/js/core/jquery.min.js"></script>
  <style>
  * { box-sizing:border-box; }
 
@@ -252,7 +251,7 @@ footer img:focus , footer a:focus { outline: none; }
   <h3>TA-4</h3>
 </hgroup>
  
-<form th:action="@{/login}" method="post">
+<form th:action="@{/login}" method="post"> 
  <div class="group" th:if="${param.error}">
  Invalid username and password.
  </div>
