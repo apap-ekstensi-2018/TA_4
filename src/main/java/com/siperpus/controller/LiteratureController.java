@@ -14,6 +14,7 @@ import com.siperpus.model.LiteratureModel;
 
 @Controller
 public class LiteratureController {
+<<<<<<< HEAD
 	
 	@Autowired
     LiteratureService literatureDAO;
@@ -32,4 +33,10 @@ public class LiteratureController {
 
 	        return "viewall";
 	    }
+=======
+	@RequestMapping("/literature")
+	public String index () {
+	 return "literature_index";
+	}
+>>>>>>> 4beacfac125cba4f45aaa4d61d5d58d235695ee6
 }
