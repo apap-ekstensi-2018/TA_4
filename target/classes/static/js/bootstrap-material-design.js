@@ -332,6 +332,7 @@ var Alert = function ($$$1) {
         return VERSION;
       }
     }]);
+
     return Alert;
   }();
   /**
@@ -483,6 +484,7 @@ var Button = function ($$$1) {
         return VERSION;
       }
     }]);
+
     return Button;
   }();
   /**
@@ -961,6 +963,7 @@ var Carousel = function ($$$1) {
       }
 
       var config = _extends({}, $$$1(target).data(), $$$1(this).data());
+
       var slideIndex = this.getAttribute('data-slide-to');
 
       if (slideIndex) {
@@ -987,6 +990,7 @@ var Carousel = function ($$$1) {
         return Default;
       }
     }]);
+
     return Carousel;
   }();
   /**
@@ -1348,6 +1352,7 @@ var Collapse = function ($$$1) {
         return Default;
       }
     }]);
+
     return Collapse;
   }();
   /**
@@ -1909,6 +1914,7 @@ var Modal = function ($$$1) {
         return Default;
       }
     }]);
+
     return Modal;
   }();
   /**
@@ -2611,6 +2617,7 @@ var Tooltip = function ($$$1) {
         return DefaultType;
       }
     }]);
+
     return Tooltip;
   }();
   /**
@@ -2651,15 +2658,18 @@ var Popover = function ($$$1) {
   var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
   var CLASS_PREFIX = 'bs-popover';
   var BSCLS_PREFIX_REGEX = new RegExp("(^|\\s)" + CLASS_PREFIX + "\\S+", 'g');
+
   var Default = _extends({}, Tooltip.Default, {
     placement: 'right',
     trigger: 'click',
     content: '',
     template: '<div class="popover" role="tooltip">' + '<div class="arrow"></div>' + '<h3 class="popover-header"></h3>' + '<div class="popover-body"></div></div>'
   });
+
   var DefaultType = _extends({}, Tooltip.DefaultType, {
     content: '(string|element|function)'
   });
+
   var ClassName = {
     FADE: 'fade',
     SHOW: 'show'
@@ -2804,6 +2814,7 @@ var Popover = function ($$$1) {
         return DefaultType;
       }
     }]);
+
     return Popover;
   }(Tooltip);
   /**
@@ -3100,6 +3111,7 @@ var ScrollSpy = function ($$$1) {
         return Default;
       }
     }]);
+
     return ScrollSpy;
   }();
   /**
@@ -3351,6 +3363,7 @@ var Tab = function ($$$1) {
         return VERSION;
       }
     }]);
+
     return Tab;
   }();
   /**
@@ -3902,6 +3915,8 @@ var BaseInput = function ($$$1) {
         }
 
         var _requiredClass = _ref3;
+        var found = false; // allow one of several classes to be passed in x||y
+
         if (_requiredClass.indexOf("||") !== -1) {
           var oneOf = _requiredClass.split("||");
 
@@ -3920,11 +3935,17 @@ var BaseInput = function ($$$1) {
             var _requiredClass3 = _ref4;
 
             if (this.$element.hasClass(_requiredClass3)) {
+              found = true;
               break;
             }
           }
         } else if (this.$element.hasClass(_requiredClass)) {
-          
+          found = true;
+        } // error if not found
+
+
+        if (!found) {
+          $$$1.error(this.constructor.name + " element: " + Util$2.describe(this.$element) + " requires class: " + _requiredClass);
         }
       }
     }; // ------------------------------------------------------------------------
@@ -5094,7 +5115,7 @@ var Textarea = function ($$$1) {
  */
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.0): dropdown.js
+ * Bootstrap (v4.0.0-beta): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -5115,7 +5136,7 @@ var Dropdown = function ($$$1) {
 
 
   var NAME = 'dropdown';
-  var VERSION = '4.1.0';
+  var VERSION = '4.0.0-beta';
   var DATA_KEY = 'bs.dropdown';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -5513,6 +5534,7 @@ var Dropdown = function ($$$1) {
         return DefaultType;
       }
     }]);
+
     return Dropdown;
   }();
   /**
@@ -6381,7 +6403,7 @@ var BootstrapMaterialDesign = function ($$$1) {
     },
     ripples: {
       //selector: ['.btn:not(.btn-link):not(.ripple-none)'] // testing only
-      selector: [".btn:not(.btn-link):not(.ripple-none)", ".card-image:not(.ripple-none)", ".navbar a:not(.ripple-none)", ".dropdown-menu a:not(.ripple-none)", ".nav-tabs a:not(.ripple-none)", ".pagination li:not(.active):not(.disabled) a:not(.ripple-none)", ".ripple" // generic marker class to add ripple to elements
+      selector: [".btn:not(.ripple-none)", ".card-image:not(.ripple-none)", ".navbar a:not(.ripple-none)", ".dropdown-menu a:not(.ripple-none)", ".nav-tabs a:not(.ripple-none)", ".pagination li:not(.active):not(.disabled) a:not(.ripple-none)", ".ripple" // generic marker class to add ripple to elements
       ]
     },
     select: {
@@ -6400,7 +6422,8 @@ var BootstrapMaterialDesign = function ($$$1) {
     arrive: true,
     // create an ordered component list for instantiation
     instantiation: ["ripples", "checkbox", "checkboxInline", "collapseInline", "drawer", //'file',
-    "radio", "radioInline", "switch", "text", "textarea", "select", "autofill"]
+    "radio", "radioInline", "switch", "text", "textarea", // "select",
+    "autofill"]
   };
   /**
    * ------------------------------------------------------------------------

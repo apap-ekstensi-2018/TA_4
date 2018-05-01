@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>View All Students</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <style>
+		table {
+			border-collapse:collapse;
+		}
+		table tr {
+			border-bottom :1px solid #000;
+		}
+		table tr:hover {
+			background-color:#111;
+			color:#FFF;
+		}
+	</style>
+    </head>
+    <body>
+     <!--  	<div th:replace="fragments/fragment :: header"></div>-->
+        <h1>All Students</h1>
+        <table id="literatureTable" class="display" style="width:100%;border-collapse:collapse;" cellpadding="10">
+        	<thead>
+        	    <tr>
+	        		<th>No.</th>
+	        		<th>ID Literatur</th>
+	        		<th>Judul</th>
+	        		<th>Penulis</th>
+	        		<th>Penerbit</th>
+	        		<th>Jenis Literatur</th>
+	        		<th>Jumlah</th>
+	        		<th>Update</th>
+	        		<th>Delete</th>
+	        	</tr>
+        	</thead>
+        	<tbody>
+	    		<tr th:each="literature,iterationStatus: ${literatures}">
+	            <td th:text="${iterationStatus.count}">No. 1</td>
+		       	<td th:text="${literature.id}">Literature ID</td>
+		       	<td th:text="${literature.judul}">Literature Judul</td>
+		       	<td th:text="${literature.penulis}">Literature Penulis</td>
+		       	<td th:text="${literature.penerbit}">Literature Penerbit</td>
+		       	<td th:text="${literature.jenis_literatur}">Literature Jenis</td>
+		       	<td th:text="${literature.jumlah}">Literature Jumlah</td>
+			    <td><a th:href="'/student/delete/' + ${literature.id}">Delete Data</a></td>
+		       	<td><a th:href="'/student/update/' + ${literature.id}">Update Data</a></td>
+	       	</tr>
+	       	</tbody>
+	       	</table>
+	<!-- <div th:replace="fragments/fragment :: footer"></div> -->
+	</body>
+	
+	    <script th:src="@{/DataTables/datatables-1.10.16/js/jquery.dataTables.min.js}">
+	    $(document).ready(function() {
+	    $('#example').DataTable({
+    			stateSave: true
+    		});
+		} );
+	</script>
+</html>
