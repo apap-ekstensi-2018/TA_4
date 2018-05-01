@@ -19,11 +19,7 @@ public class LiteratureController {
 	@Autowired
     LiteratureService literatureDAO;
 	
-	  @RequestMapping("/")
-	    public String index()
-	    {
-	        return "index";
-	    }
+	  
 	  
 	  @RequestMapping("/literature/viewall")
 	    public String view (Model model)
