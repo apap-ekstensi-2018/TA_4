@@ -31,5 +31,34 @@ public class LiteratureServiceDatabase implements LiteratureService {
 	        log.info ("select all Literatures");
 	        return mahasiswaMapper.selectAllLiteratures();
 	    }
+	 
+	 @Override
+	 public LiteratureModel selectLiterature (Integer id)
+	 {
+	       log.info ("select literature with id: " + id);
+	       return mahasiswaMapper.selectLiterature(id);
+	 }
+
+	 @Override
+	 public void addLiterature (LiteratureModel literature)
+	 {
+		 log.info ("Literature with id " + literature.getId ()
+	     + "successfully added.");
+	     mahasiswaMapper.addLiterature (literature);
+	 }
+
+	 @Override
+	 public void updateLiterature (Integer id)
+	 {
+		 log.info ("Literature with id " + id
+	     + "successfully update.");
+		 mahasiswaMapper.updateLiterature (id);
+	 }
+
+	@Override
+	public void deleteLiterature(Integer id) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
