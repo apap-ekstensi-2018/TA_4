@@ -3,6 +3,7 @@ package com.siperpus.service;
 import java.util.List;
 
 import com.siperpus.model.LiteratureModel;
+import com.siperpus.model.MahasiswaModel;
 
 public interface LiteratureService {
 	 List<LiteratureModel> selectAllLiteratures ();

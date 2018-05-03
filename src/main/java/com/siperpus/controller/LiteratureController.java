@@ -7,10 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.siperpus.service.LiteratureService;
 import com.siperpus.model.LiteratureModel;
+import com.siperpus.model.MahasiswaModel;
 
 @Controller
 public class LiteratureController {
@@ -29,6 +31,32 @@ public class LiteratureController {
 
 	        return "viewall";
 	    }
+	  
+	  @RequestMapping("/literature/add")
+	    public String add ()
+	    {
+	        return "form-add";
+	    }
+	  
+	  @RequestMapping(value = "/literature/add/submit", method = RequestMethod.POST)
+	    public String addSubmit (Model model,
+	            @RequestParam(value = "id", required = false) Integer id,
+	            @RequestParam(value = "judul", required = false) String judul,
+	            @RequestParam(value = "penulis", required = false) String penulis,
+	            @RequestParam(value = "penerbit", required = false) String penerbit,
+	            @RequestParam(value = "jenis_literatur", required = false) String jenis_literatur,
+	            @RequestParam(value = "jumlah", required = false) String jumlah)
+	    {
+	        LiteratureModel literature = new LiteratureModel (id, judul, penulis, penerbit, jenis_literatur, jumlah);
+	        literatureDAO.addLiterature (literature);
+
+	        return "success-add";
+	    }
+	  
+	  
+	  
+	  
+	  
  
 	 
 }

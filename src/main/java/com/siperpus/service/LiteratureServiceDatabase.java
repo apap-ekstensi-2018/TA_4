@@ -33,10 +33,10 @@ public class LiteratureServiceDatabase implements LiteratureService {
 	    }
 	 
 	 @Override
-	 public LiteratureModel selectLiterature (Integer id)
+	 public void selectLiterature (Integer id)
 	 {
 	       log.info ("select literature with id: " + id);
-	       return mahasiswaMapper.selectLiterature(id);
+	       mahasiswaMapper.selectLiterature(id);
 	 }
 
 	 @Override
