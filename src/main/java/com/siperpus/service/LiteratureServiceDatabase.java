@@ -57,7 +57,9 @@ public class LiteratureServiceDatabase implements LiteratureService {
 
 	@Override
 	public void deleteLiterature(Integer id) {
-		// TODO Auto-generated method stub
+		log.info ("Literature with id" + id 
+				+ "succesfully deleted.");
+		mahasiswaMapper.deleteLiterature(id);
 		
 	}
 

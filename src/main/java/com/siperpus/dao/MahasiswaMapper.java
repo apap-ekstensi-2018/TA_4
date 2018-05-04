@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.Delete;
 
 import com.siperpus.model.LiteratureModel;
 import com.siperpus.model.MahasiswaModel;
@@ -37,4 +38,6 @@ public interface MahasiswaMapper {
 	 @Update("UPDATE literatur SET id=#{id}, judul=#{judul}, penulis=#{penulis}, penerbit=#{penerbit}, jenis_literatur=#{jenis_literatur}, jumlah=#{jumlah} WHERE id=#{id}")
 	    void updateLiterature (Integer id);
 		   
+	 @Delete ("DELETE FROM literatur WHERE id=#{id}")
+	 	void deleteLiterature (Integer id);
 }

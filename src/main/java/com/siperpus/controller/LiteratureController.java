@@ -54,7 +54,12 @@ public class LiteratureController {
 	    }
 	  
 	  
-	  
+	  	  @RequestMapping(value = "/literature/hapus/{id_literatur}", method = RequestMethod.POST)
+	  public String delete(Model model, @PathVariable(value = "id_literatur") Integer id ) {
+		  literatureDAO.deleteLiterature(id);
+		  return "viewall";
+	  }
+
 	  
 	  
  
