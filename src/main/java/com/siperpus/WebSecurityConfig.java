@@ -13,12 +13,16 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+	 
+	@Autowired
+	DataSource dataSource;
 	@Override
 	protected void configure(HttpSecurity http) throws Exception
 	{
 		http
 			.authorizeRequests()
 				.antMatchers("/resources/**", "/login", "/js/**").permitAll()
+				.antMatchers("/literature/add", "/literatur/ubah/**", "/literature/hapus/**").hasRole("STAF")
 				.anyRequest().authenticated()
 				.and()
 				.csrf().disable()
@@ -27,20 +31,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.permitAll()
 				.and()
 			.logout()
-				.permitAll();
+				.permitAll(); 
 	}
 	
-	@Autowired
-	DataSource dataSource;
+	
 	
 	@Autowired
 	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception
 	{
-	 auth.jdbcAuthentication().dataSource(dataSource)
-	.usersByUsernameQuery(
-	"select username,password, 1 from user_account where username=?")
-	.authoritiesByUsernameQuery(
-	"select username, role from user_account where username=?");
+		auth.jdbcAuthentication().dataSource(dataSource)
+			.usersByUsernameQuery(
+						"select username,password, 1 from user_account where username=?")
+			.authoritiesByUsernameQuery(
+					"select username, role from user_account where username=?");
 	}
 	 
 }

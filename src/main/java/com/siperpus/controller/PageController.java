@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class PageController {
 	@RequestMapping("/")
 	public String index () {
+		 
 	 return "index";
 	//	return "dashboard";
 	}

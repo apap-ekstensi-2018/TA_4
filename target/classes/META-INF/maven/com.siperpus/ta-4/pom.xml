@@ -22,7 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<org.springframework.security.version>4.1.1.RELEASE</org.springframework.security.version>
+		 
     	 
 	</properties>
 	 
@@ -38,17 +38,17 @@
 		<dependency>
 	    	<groupId>org.springframework.security</groupId>
     		<artifactId>spring-security-core</artifactId>
-    		<version>${org.springframework.security.version}</version>
+    		 
 		</dependency>
 		<dependency>
     		<groupId>org.springframework.security</groupId>
     		<artifactId>spring-security-web</artifactId>
-    		<version>${org.springframework.security.version}</version>
+    		 
 		</dependency>
 		<dependency>
     <groupId>org.springframework.security</groupId>
     <artifactId>spring-security-config</artifactId>
-    <version>${org.springframework.security.version}</version>
+    
     <scope>runtime</scope>
 </dependency>
 		<dependency>
