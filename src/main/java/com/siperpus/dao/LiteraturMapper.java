@@ -18,8 +18,8 @@ public interface LiteraturMapper {
 	@Insert ("INSERT INTO literatur (judul, penulis, penerbit,jenis_literatur, jumlah) VALUES (#{judul}, #{penulis}, #{penerbit}, #{jenis_literatur}, #{jumlah})")
  	void addLiterature (LiteratureModel literature);
  
- @Update("UPDATE literatur SET id=#{id}, judul=#{judul}, penulis=#{penulis}, penerbit=#{penerbit}, jenis_literatur=#{jenis_literatur}, jumlah=#{jumlah} WHERE id=#{id}")
-    void updateLiterature (Integer id);
+ @Update("UPDATE literatur SET   judul=#{judul}, penulis=#{penulis}, penerbit=#{penerbit}, jenis_literatur=#{jenis_literatur}, jumlah=#{jumlah} WHERE id=#{id}")
+    void updateLiterature (LiteratureModel literature);
 	   
  @Delete ("DELETE FROM literatur WHERE id=#{id}")
  	void deleteLiterature (Integer id);

@@ -10,9 +10,9 @@ public interface LiteratureService {
 	 
 	 void addLiterature (LiteratureModel literature);
 	 
-	 void selectLiterature (Integer id);
+	 LiteratureModel selectLiterature (Integer id);
 	 
-	 void updateLiterature (Integer id);
+	 void updateLiterature  (LiteratureModel literature);
 	 
 	 void deleteLiterature (Integer id);
 	 

@@ -27,10 +27,10 @@ public class LiteratureServiceDatabase implements LiteratureService {
 	    }
 	 
 	 @Override
-	 public void selectLiterature (Integer id)
+	 public LiteratureModel selectLiterature (Integer id)
 	 {
 	       log.info ("select literature with id: " + id);
-	       literaturMapper.selectLiterature(id);
+	      return  literaturMapper.selectLiterature(id);
 	 }
 
 	 @Override
@@ -42,11 +42,11 @@ public class LiteratureServiceDatabase implements LiteratureService {
 	 }
 
 	 @Override
-	 public void updateLiterature (Integer id)
+	 public void updateLiterature (LiteratureModel literature)
 	 {
-		 log.info ("Literature with id " + id
+		 log.info ("Literature with id " + literature.getId()
 	     + "successfully update.");
-		 literaturMapper.updateLiterature (id);
+		 literaturMapper.updateLiterature (literature);
 	 }
 
 	@Override

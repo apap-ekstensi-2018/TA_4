@@ -88,7 +88,7 @@
 		       	<td th:text="${literature.penerbit}">Literature Penerbit</td>
 		       	<td th:text="${literature.jenis_literatur}">Literature Jenis</td>
 		       	<td th:text="${literature.jumlah}">Literature Jumlah</td>
-			    <td><a onclick="return confirm('Are you sure?')" th:href="'/literature/hapus/' + ${literature.id}">Delete Data</a> || <a th:href="'/student/update/' + ${literature.id}">Edit Data</a></td>
+			    <td><a onclick="return confirm('Are you sure?')" th:href="'/literature/hapus/' + ${literature.id}">Delete Data</a> || <a th:href="'/literatur/ubah/' + ${literature.id}">Edit Data</a></td>
 		       
 	       	</tr> 
                                         </tbody>

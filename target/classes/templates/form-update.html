@@ -33,7 +33,25 @@
                     SIPERPUS TA-4  
                 </a>
             </div>
-            <div class="sidebar-wrapper" th:replace="fragments/sidebar :: sidebar"></div>
+           <div class="sidebar-wrapper" >
+             <ul class="nav">
+                    <li class="nav-item  ">
+                        <a class="nav-link" href="/">
+                            <i class="material-icons">dashboard</i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                     
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/literature/viewall">
+                            <i class="material-icons">content_paste</i>
+                            <p>List Literature</p>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
             
         </div>
         <div class="main-panel">
@@ -44,53 +62,75 @@
             <div class="content">
                 <div class="container-fluid">
                 	<div class="row">
-			<form class="center-block" method="post" action="/literature/add/submit" th:object="${literature}">
-				<h3 class="grey-text text-darken-2">Tambah Literature</h3>
+                	 <div class="col-md-8">
+                            <div class="card">
+                	 <div class="card-header card-header-primary">
+                                    <h4 class="card-title">Edit Literature</h4>
+                                    <p class="card-category">Lengkapi form isian literature</p>
+                                </div>
+                	<div class="card-body">
+			<form   method="post" action="/literatur/ubah/submit" th:object="${literature}">
+				 
 				<div class="divider col s12 l6"></div>
 				<br/>
 				<div class="row">
 					<div class="input-field col s12 l3">
-						<input placeholder="Masukkan id Buku" id="id" class="validate" type="text" th:field="${literature.id}" readonly="true"/>
-						<label for="name">Id Literature</label>
+						<input  id="id" class="validate" type="hidden" name="id" th:field="${literature.id}"  />
+					 
 					</div>
 				</div>
+				 
+				 <div class="row">
+										 	<div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Judul Buku</label>
+                                                    <input type="text" class="form-control" name="judul" id="judul" th:field="${literature.judul}"/>
+                                                </div>
+                                            </div>
+										</div>
+				 <div class="row">
+										 	<div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Penulis</label>
+                                                    <input type="text" class="form-control" name="penulis" id="penulis" th:field="${literature.penulis}"/>
+                                                </div>
+                                            </div>
+										</div>
+				 <div class="row">
+										 	<div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Penerbit</label>
+                                                    <input type="text" class="form-control" name="penerbit" id="penerbit" th:field="${literature.penerbit}"/>
+                                                </div>
+                                            </div>
+										</div>
 				<div class="row">
-					<div class="input-field col s12 l6">
-						<input placeholder="Masukkan judul buku" id="judul" class="validate" type="text" th:field="${literature.judul}"/>
-						<label for="name">Judul Buku</label>
-					</div>
-				</div>
+										 	<div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Jenis Literature</label>
+                                                    <input type="text" class="form-control" name="jenis_literatur" id="jenis_literatur" th:field="${literature.jenis_literatur}"/>
+                                                </div>
+                                            </div>
+										</div>
 				<div class="row">
-					<div class="input-field col s12 l6">
-						<input placeholder="Masukkan nama penulis" id="penulis" class="validate" type="text" th:field="${literature.penulis}"/>
-						<label for="name">Penulis</label>
-					</div>
-				</div>
-				<div class="row">
-					<div class="input-field col s12 l6">
-						<input placeholder="Masukkan nama penerbit" id="penerbit" class="validate" type="text" th:field="${literature.penerbit}"/>
-						<label for="name">Penerbit</label>
-					</div>
-				</div>
-				<div class="row">
-					<div class="input-field col s12 l6">
-						<input placeholder="Masukkan jenis literatur" id="jenis_literatur" class="validate" type="text" th:field="${literature.jenis_literatur}"/>
-						<label for="name">Jenis Literature</label>
-					</div>
-				</div>
-				<div class="row">
-					<div class="input-field col s12 l6">
-						<input placeholder="Masukkan jumlah literature" id="jumlah" class="validate" type="text" th:field="${literature.jumlah}"/>
-						<label for="name">Jumlah Literature</label>
-					</div>
-				</div>
-					<button class="btn blue" type="submit" name="action" value="submit">
+										 	<div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Jumlah</label>
+                                                    <input type="text" class="form-control" name="jumlah" id="jumlah" th:field="${literature.jumlah}" />
+                                                </div>
+                                            </div>
+										</div>
+				 
+					<button class="btn" type="submit" name="action" value="submit">
 						Submit
 					</button>
-					<a class="btn red" th:href="@{/home)}">
+					<a class="btn" href="/literature/viewall">
 						Back
 					</a>
 			</form>
+		</div>
+		</div>
+		</div>
 		</div>
                 </div>
             </div>
@@ -111,9 +151,7 @@
 <script src="/js/plugins/bootstrap-notify.js"></script>
 <!-- Material Dashboard Core initialisations of plugins and Bootstrap Material Design Library -->
 <script src="/js/material-dashboard.js?v=2.0.0"></script>
-<!-- demo init -->
-  <script src="/js/plugins/demo.js"></script>
-  <script th:src="@{/DataTables/datatables-1.10.16/js/jquery.dataTables.min.js}"></script>
+<!-- demo init --> 
 <script type="text/javascript">
     $(document).ready(function() {
 
@@ -122,10 +160,7 @@
         // demo.initMaterialWizard();
 
         // Javascript method's body can be found in assets/js/demos.js
-        demo.initDashboardPageCharts();
-
-        demo.initCharts();
-    	$('select').material_select();
+       
     });
 </script>
 	

@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -61,6 +63,39 @@ public class LiteratureController {
 	        return "viewall"; 
 	    }
 	  
+	  @RequestMapping("/literatur/ubah/{id_literatur}")
+	    public String updatePath (Model model,
+	            @PathVariable(value = "id_literatur") int id_literatur)
+	    {
+		  LiteratureModel literature = literatureDAO.selectLiterature(id_literatur);
+
+	        if (literature != null) { 
+	            model.addAttribute ("literature", literature);
+	            
+	            return "form-update";
+	        } else {
+	            model.addAttribute ("id", id_literatur);
+	            return "not-found";
+	        }
+	    }
+	  
+	  @PostMapping(value = "/literatur/ubah/submit")
+	    public String updateSubmit(@ModelAttribute LiteratureModel literatur, Model model)
+	    {
+	    	 	 if (literatur != null)
+	    		{
+	    	 		literatureDAO.updateLiterature(literatur); 
+	    	 		 model.addAttribute("title", "Konfirmasi Update Student");
+	    	         return "success-update";
+	    		}
+	    	 	 else	
+	    	 	 {
+	    	 		model.addAttribute("title", "Konfirmasi Update Student");
+	    	         return "failed-update";
+	    	 	 }
+	    		
+	           
+	    }
 	  
 	  	  @RequestMapping(value = "/literature/hapus/{id_literatur}", method = RequestMethod.GET)
 	  public String delete(Model model, @PathVariable(value = "id_literatur") Integer id ) {
