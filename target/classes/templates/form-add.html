@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:include="master-layout :: master">
+<style th:fragment="style">
+	.row{
+		margin-bottom: .5em;
+	}
+</style>
+<div th:fragment="content">
+    <div class="container" style="margin-top: 2em">
+		<div class="row">
+			<form class="center-block" method="post" action="/literature/add/submit" th:object="${literature}">
+				<h3 class="grey-text text-darken-2">Tambah Literature</h3>
+				<div class="divider col s12 l6"></div>
+				<br/>
+				<div class="row">
+					<div class="input-field col s12 l3">
+						<input placeholder="Masukkan id Buku" id="id" class="validate" type="text" th:field="${literature.id}" readonly="true"/>
+						<label for="name">Id Literature</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12 l6">
+						<input placeholder="Masukkan judul buku" id="judul" class="validate" type="text" th:field="${literature.judul}"/>
+						<label for="name">Judul Buku</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12 l6">
+						<input placeholder="Masukkan nama penulis" id="penulis" class="validate" type="text" th:field="${literature.penulis}"/>
+						<label for="name">Penulis</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12 l6">
+						<input placeholder="Masukkan nama penerbit" id="penerbit" class="validate" type="text" th:field="${literature.penerbit}"/>
+						<label for="name">Penerbit</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12 l6">
+						<input placeholder="Masukkan jenis literatur" id="jenis_literatur" class="validate" type="text" th:field="${literature.jenis_literatur}"/>
+						<label for="name">Jenis Literature</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12 l6">
+						<input placeholder="Masukkan jumlah literature" id="jumlah" class="validate" type="text" th:field="${literature.jumlah}"/>
+						<label for="name">Jumlah Literature</label>
+					</div>
+				</div>
+					<button class="btn blue" type="submit" name="action" value="submit">
+						Submit
+					</button>
+					<a class="btn red" th:href="@{/home)}">
+						Back
+					</a>
+			</form>
+		</div>
+    </div>
+</div>
+<script th:fragment="script">
+	$(document).ready(function() {
+		$('select').material_select();
+	});
+</script>
+</html>
