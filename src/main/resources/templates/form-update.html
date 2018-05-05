@@ -33,25 +33,7 @@
                     SIPERPUS TA-4  
                 </a>
             </div>
-            <div class="sidebar-wrapper" >
-             <ul class="nav">
-                    <li class="nav-item  ">
-                        <a class="nav-link" href="/">
-                            <i class="material-icons">dashboard</i>
-                            <p>Dashboard</p>
-                        </a>
-                    </li>
-                     
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/literature/viewall">
-                            <i class="material-icons">content_paste</i>
-                            <p>List Literature</p>
-                        </a>
-                    </li>
-                    
-                    
-                </ul>
-            </div>
+            <div class="sidebar-wrapper" th:replace="fragments/sidebar :: sidebar"></div>
             
         </div>
         <div class="main-panel">
@@ -62,41 +44,54 @@
             <div class="content">
                 <div class="container-fluid">
                 	<div class="row">
-                	
-                		<div class="card">
-                                <div class="card-header card-header-warning">
-                                    <h4 class="card-title">List Literatur</h4>
-                                    <p class="card-category">View All Literatur</p>
-                                </div>
-                                <div class="card-body table-responsive">
-                                    <table class="table table-hover">
-                                        <thead class="text-warning">
-                                        	<th>No.</th>
-							        		<th>Judul</th>
-							        		<th>Penulis</th>
-							        		<th>Penerbit</th>
-							        		<th>Jenis Literatur</th>
-							        		<th>Jumlah Literatur</th>
-							        		<th>Action</th>
-                                        </thead>
-                                        <tbody>
-                                        <tr th:each="literature,iterationStatus: ${literatures}">
-	            <td th:text="${iterationStatus.count}">No. 1</td>
-		       	 
-		       	<td th:text="${literature.judul}">Literature Judul</td>
-		       	<td th:text="${literature.penulis}">Literature Penulis</td>
-		       	<td th:text="${literature.penerbit}">Literature Penerbit</td>
-		       	<td th:text="${literature.jenis_literatur}">Literature Jenis</td>
-		       	<td th:text="${literature.jumlah}">Literature Jumlah</td>
-			    <td><a th:href="'/student/delete/' + ${literature.id}">Delete Data</a> || <a th:href="'/student/update/' + ${literature.id}">Edit Data</a></td>
-		       
-	       	</tr> 
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                		  
-                	</div> 
+			<form class="center-block" method="post" action="/literature/add/submit" th:object="${literature}">
+				<h3 class="grey-text text-darken-2">Tambah Literature</h3>
+				<div class="divider col s12 l6"></div>
+				<br/>
+				<div class="row">
+					<div class="input-field col s12 l3">
+						<input placeholder="Masukkan id Buku" id="id" class="validate" type="text" th:field="${literature.id}" readonly="true"/>
+						<label for="name">Id Literature</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12 l6">
+						<input placeholder="Masukkan judul buku" id="judul" class="validate" type="text" th:field="${literature.judul}"/>
+						<label for="name">Judul Buku</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12 l6">
+						<input placeholder="Masukkan nama penulis" id="penulis" class="validate" type="text" th:field="${literature.penulis}"/>
+						<label for="name">Penulis</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12 l6">
+						<input placeholder="Masukkan nama penerbit" id="penerbit" class="validate" type="text" th:field="${literature.penerbit}"/>
+						<label for="name">Penerbit</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12 l6">
+						<input placeholder="Masukkan jenis literatur" id="jenis_literatur" class="validate" type="text" th:field="${literature.jenis_literatur}"/>
+						<label for="name">Jenis Literature</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12 l6">
+						<input placeholder="Masukkan jumlah literature" id="jumlah" class="validate" type="text" th:field="${literature.jumlah}"/>
+						<label for="name">Jumlah Literature</label>
+					</div>
+				</div>
+					<button class="btn blue" type="submit" name="action" value="submit">
+						Submit
+					</button>
+					<a class="btn red" th:href="@{/home)}">
+						Back
+					</a>
+			</form>
+		</div>
                 </div>
             </div>
            <footer th:replace="fragments/footer :: footer">&copy; 2018 APAP</footer>
@@ -130,10 +125,9 @@
         demo.initDashboardPageCharts();
 
         demo.initCharts();
-     //   $('#example').DataTable({
-		//	stateSave: true
-		//});
+    	$('select').material_select();
     });
 </script>
 	
 </html>
+ 

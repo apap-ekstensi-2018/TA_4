@@ -19,25 +19,5 @@ public interface MahasiswaMapper {
 	 @Select("SELECT * FROM student WHERE npm = #{npm}")
 	    MahasiswaModel selectMahasiswa (@Param("npm") String npm);
 	 
-	 @Select("SELECT * FROM literatur")
-	    List<LiteratureModel> selectAllLiteratures();
-	 
-	 @Select ("SELECT * FROM literatur WHERE id = #{id}")
-		@Results (value= {
-			@Result(property="id", column="id"),
-			@Result(property="judul",column="judul"),
-			@Result(property="penulis",column="penulis"),
-			@Result(property="penerbit",column="penerbit"),
-			@Result(property="jenis_literatur",column="jenis_literatur"),
-			@Result(property="jumlah",column="jumlah")})
-		LiteratureModel selectLiterature (@Param("id") Integer id); 
-	 
-	 @Insert ("INSERT INTO literatur (id,judul, penulis, penerbit,jenis_literatur, jumlah) VALUES #{id}, #{judul}, #{penulis}, #{penerbit}, #{jenis_literatur}, #{jumlah}")
-	 	void addLiterature (LiteratureModel literature);
-	 
-	 @Update("UPDATE literatur SET id=#{id}, judul=#{judul}, penulis=#{penulis}, penerbit=#{penerbit}, jenis_literatur=#{jenis_literatur}, jumlah=#{jumlah} WHERE id=#{id}")
-	    void updateLiterature (Integer id);
-		   
-	 @Delete ("DELETE FROM literatur WHERE id=#{id}")
-	 	void deleteLiterature (Integer id);
+	
 }

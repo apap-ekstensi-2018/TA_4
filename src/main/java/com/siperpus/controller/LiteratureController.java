@@ -40,14 +40,19 @@ public class LiteratureController {
 	  
 	  @RequestMapping(value = "/literature/add/submit", method = RequestMethod.POST)
 	    public String addSubmit (Model model,
-	            @RequestParam(value = "id", required = false) Integer id,
 	            @RequestParam(value = "judul", required = false) String judul,
 	            @RequestParam(value = "penulis", required = false) String penulis,
 	            @RequestParam(value = "penerbit", required = false) String penerbit,
 	            @RequestParam(value = "jenis_literatur", required = false) String jenis_literatur,
 	            @RequestParam(value = "jumlah", required = false) String jumlah)
 	    {
-	        LiteratureModel literature = new LiteratureModel (id, judul, penulis, penerbit, jenis_literatur, jumlah);
+	        LiteratureModel literature = new LiteratureModel ();
+	        literature.setJudul(judul);
+	        literature.setPenulis(penulis);
+	        literature.setPenerbit(penerbit);
+	        literature.setJenis_literatur(jenis_literatur);
+	        literature.setJumlah(jumlah);
+	        
 	        literatureDAO.addLiterature (literature);
 
 	        return "success-add";
