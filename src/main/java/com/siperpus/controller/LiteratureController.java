@@ -55,14 +55,21 @@ public class LiteratureController {
 	        
 	        literatureDAO.addLiterature (literature);
 
-	        return "success-add";
+	        List<LiteratureModel> literatureList = literatureDAO.selectAllLiteratures ();
+	        model.addAttribute ("literatures", literatureList);
+
+	        return "viewall"; 
 	    }
 	  
 	  
-	  	  @RequestMapping(value = "/literature/hapus/{id_literatur}", method = RequestMethod.POST)
+	  	  @RequestMapping(value = "/literature/hapus/{id_literatur}", method = RequestMethod.GET)
 	  public String delete(Model model, @PathVariable(value = "id_literatur") Integer id ) {
 		  literatureDAO.deleteLiterature(id);
-		  return "viewall";
+		  
+		  List<LiteratureModel> literature = literatureDAO.selectAllLiteratures ();
+	        model.addAttribute ("literatures", literature);
+
+	        return "viewall"; 
 	  }
 
 	  

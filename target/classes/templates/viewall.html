@@ -88,7 +88,7 @@
 		       	<td th:text="${literature.penerbit}">Literature Penerbit</td>
 		       	<td th:text="${literature.jenis_literatur}">Literature Jenis</td>
 		       	<td th:text="${literature.jumlah}">Literature Jumlah</td>
-			    <td><a th:href="'/student/delete/' + ${literature.id}">Delete Data</a> || <a th:href="'/student/update/' + ${literature.id}">Edit Data</a></td>
+			    <td><a onclick="return confirm('Are you sure?')" th:href="'/literature/hapus/' + ${literature.id}">Delete Data</a> || <a th:href="'/student/update/' + ${literature.id}">Edit Data</a></td>
 		       
 	       	</tr> 
                                         </tbody>
@@ -97,6 +97,11 @@
                             </div>
                 		  
                 	</div> 
+                	<div class="row">
+                	 <a class="btn btn-warning" href="/literature/add">
+                            Add New Literatur
+                        </a>
+                	</div>
                 </div>
             </div>
            <footer th:replace="fragments/footer :: footer">&copy; 2018 APAP</footer>
