@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> f9db483a8619e9ade665e198c86b745d01f2a3ee
 	<head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
@@ -23,125 +19,6 @@
      <link href="/assets-for-demo/demo.css" rel="stylesheet" />
     <!-- iframe removal -->
 </head>
-<<<<<<< HEAD
-
-<body class="">
-    <div class="wrapper">
-        <div class="sidebar" data-color="purple" data-background-color="white" >
-            <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-
-        Tip 2: you can also add an image using data-image tag
-    -->
-            <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                    SIPERPUS TA-4  
-                </a>
-            </div>
-            <div class="sidebar-wrapper" >
-             <ul class="nav">
-                    <li class="nav-item  ">
-                        <a class="nav-link" href="/">
-                            <i class="material-icons">dashboard</i>
-                            <p>Dashboard</p>
-                        </a>
-                    </li>
-                     
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/literature/viewall">
-                            <i class="material-icons">content_paste</i>
-                            <p>List Literature</p>
-                        </a>
-                    </li>
-                    
-                    
-                </ul>
-            </div>
-            
-        </div>
-        <div class="main-panel">
-            <!-- Navbar -->
-            <nav class="sidebar-wrapper" th:replace="fragments/header :: header"></nav>
-           
-            <!-- End Navbar -->
-            <div class="content">
-                <div class="container-fluid">
-                	<div class="row">
-                	
-                		<div class="card">
-                                <div class="card-header card-header-warning">
-                                    <h4 class="card-title">List Literatur</h4>
-                                    <p class="card-category">View Literatur</p>
-                                </div>
-                                <div class="card-body table-responsive">
-                                    <table class="table table-hover">
-                                        <thead class="text-warning">
-							        		<th>Judul</th>
-							        		<th>Penulis</th>
-							        		<th>Penerbit</th>
-							        		<th>Jenis Literatur</th>
-							        		<th>Tersedia</th>
-                                        </thead>
-                                        <tbody>
-                                        <tr th:each="literature,iterationStatus: ${literatures}">
-		       	 
-		       	<td th:text="${literature.judul}">Literature Judul</td>
-		       	<td th:text="${literature.penulis}">Literature Penulis</td>
-		       	<td th:text="${literature.penerbit}">Literature Penerbit</td>
-		       	<td th:text="${literature.jenis_literatur}">Literature Jenis</td>
-		       	<td th:text="${literature.jumlah}">Literature Jumlah</td>
-	       	</tr> 
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-            </div>
-           <footer th:replace="fragments/footer :: footer">&copy; 2018 APAP</footer>
-        </div>
-    </div>
-</body>
-<!--   Core JS Files   -->
-<script src="/js/core/jquery.min.js"></script>
-<script src="/js/core/popper.min.js"></script>
-<script src="/js/bootstrap-material-design.js"></script>
-<script src="/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-<!--  Charts Plugin, full documentation here: https://gionkunz.github.io/chartist-js/ -->
-<script src="/js/plugins/chartist.min.js"></script>
-<!-- Library for adding dinamically elements -->
-<script src="/js/plugins/arrive.min.js" type="text/javascript"></script>
-<!--  Notifications Plugin, full documentation here: http://bootstrap-notify.remabledesigns.com/    -->
-<script src="/js/plugins/bootstrap-notify.js"></script>
-<!-- Material Dashboard Core initialisations of plugins and Bootstrap Material Design Library -->
-<script src="/js/material-dashboard.js?v=2.0.0"></script>
-<!-- demo init -->
-  <script src="/js/plugins/demo.js"></script>
-  <script th:src="@{/DataTables/datatables-1.10.16/js/jquery.dataTables.min.js}"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-
-    });
-</script>
-	
-</html>
-=======
-
-    <head>
-        <title>View peminjaman by id</title>
-    </head>
-    <body>
-    	
-    	
-       	<h3 th:text="'id = ' + ${peminjaman.id}">id peminjaman</h3>
-       	<h3 th:text="'id_liteatur = ' + ${peminjaman.id_literatur}">id literatur </h3>
-       	<h3 th:text="'username_peminjam = ' + ${peminjaman.username_peminjam}">Username Peminjam</h3>
-       	<h3 th:text="'tanggal_peminjaman = ' + ${peminjaman.tanggal_peminjaman}">tanggal peminjaman</h3>
-       	<h3 th:text="'tanggal_pengembalian = ' + ${peminjaman.tanggal_pengembalian}">tanggal pengembalian </h3>
-       	<h3 th:text="'id_surat = ' + ${peminjaman.id_surat}">id surat</h3>
-       	<h3 th:text="'status_peminjaman = ' + ${peminjaman.status_peminjaman}">status peminjaman</h3>
-    </body>
-</html>
->>>>>>> f6c0cd2b75d131f70c7ec6c5069e37bdd41d857e
-=======
 
 <body class="">
     <div class="wrapper">
@@ -288,4 +165,3 @@
 </script>
 	
 </html>
->>>>>>> f9db483a8619e9ade665e198c86b745d01f2a3ee

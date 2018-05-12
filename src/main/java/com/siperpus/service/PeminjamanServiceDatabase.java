@@ -56,5 +56,14 @@ public class PeminjamanServiceDatabase implements PeminjamanService {
 				+ "succesfully deleted.");
 		peminjamanMapper.deletePeminjaman(id);
 	}
+	
+	@Override
+	 public void updateStatusPeminjaman (PeminjamanModel peminjaman)
+	 {
+		 log.info ("Peminjaman with id " + peminjaman.getId()
+	     + "successfully update.");
+		 peminjamanMapper.updateStatusPeminjaman(peminjaman);
+	 }
 
+	
 }
