@@ -31,5 +31,7 @@ public interface PeminjamanMapper {
 @Select("select id, id_literatur, username_peminjam, tanggal_peminjaman, tanggal_pengembalian, id_surat, status_peminjaman from peminjaman_literatur where id = #{id}")
 	PeminjamanModel selectPeminjaman (@Param("id") Integer id);  
 
+@Update("UPDATE peminjaman_literatur SET status_peminjaman =#{status} WHERE id=#{id}")
+	void updateStatusPeminjaman (PeminjamanModel peminjaman);
 
 }

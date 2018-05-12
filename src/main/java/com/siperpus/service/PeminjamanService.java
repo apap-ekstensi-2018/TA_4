@@ -12,5 +12,6 @@ public interface PeminjamanService {
 	 void updatePeminjaman  (PeminjamanModel peminjaman);
 	  
 	 void deletePeminjaman (Integer id);  
+	 void updateStatusPeminjaman (PeminjamanModel peminjaman);
 	 
 }

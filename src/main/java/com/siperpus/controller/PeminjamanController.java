@@ -114,4 +114,35 @@ public class PeminjamanController {
 	        }
 	   
 	 
-}}
+}
+	    
+	    @RequestMapping("/peminjaman/ubahstatus/{id}")
+	    public String viewPath (Model model,
+	            @PathVariable(value = "id") String id)
+	    {
+	        PeminjamanModel peminjaman= peminjamanDAO.selectPeminjaman(Integer.valueOf(id));
+
+	        if (peminjaman != null) {
+	            model.addAttribute ("peminjaman", peminjaman);
+	            return "form-update-status";
+	        } else {
+	            model.addAttribute ("id", id);
+	            return "not-found";
+	        }
+	    }
+
+	    @RequestMapping("/peminjaman/ubahstatus/submit")
+	    public String submitUbahStatus (@ModelAttribute PeminjamanModel pm, Model model)
+	    {
+	        //PeminjamanModel peminjaman= peminjamanDao.selectPeminjaman(Integer.valueOf(id));
+	    	
+	        if (pm != null) {
+	            peminjamanDAO.updateStatusPeminjaman(pm);
+	        	//model.addAttribute ("peminjaman", pm);
+	            return "form-update-status";
+	        } else {
+	            //model.addAttribute ("id", id);
+	            return "not-found";
+	        }
+	    }
+	    }
