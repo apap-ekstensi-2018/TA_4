@@ -6,16 +6,45 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.siperpus.model.LiteratureModel;
+<<<<<<< HEAD
+=======
+
+>>>>>>> f6c0cd2b75d131f70c7ec6c5069e37bdd41d857e
 import com.siperpus.model.PeminjamanModel;
 import com.siperpus.service.PeminjamanServiceDatabase;
 import com.siperpus.dao.LiteraturMapper;
 import com.siperpus.dao.PeminjamanMapper;
+<<<<<<< HEAD
+=======
+
+import com.siperpus.service.PeminjamanServiceDatabase;
+import com.siperpus.dao.LiteraturMapper;
+
+>>>>>>> f6c0cd2b75d131f70c7ec6c5069e37bdd41d857e
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
 public class PeminjamanServiceDatabase implements PeminjamanService {
+<<<<<<< HEAD
+=======
+
+	@Autowired
+	PeminjamanMapper peminjamanMapper;
+	
+	
+
+	@Override
+	 public PeminjamanModel selectPeminjaman (Integer id)
+	 {
+	       log.info ("select peminjaman with id: " + id);
+	      return  peminjamanMapper.selectPeminjaman(id);
+	 }
+	
+	 
+
+>>>>>>> f6c0cd2b75d131f70c7ec6c5069e37bdd41d857e
 	
 	 
 	 @Autowired
@@ -58,5 +87,9 @@ public class PeminjamanServiceDatabase implements PeminjamanService {
 		peminjamanMapper.deletePeminjaman(id);
 		
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> f6c0cd2b75d131f70c7ec6c5069e37bdd41d857e
 
 }
