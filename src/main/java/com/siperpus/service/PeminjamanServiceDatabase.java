@@ -6,8 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.siperpus.model.LiteratureModel;
+import com.siperpus.model.PeminjamanModel;
 import com.siperpus.service.PeminjamanServiceDatabase;
 import com.siperpus.dao.LiteraturMapper;
+import com.siperpus.dao.PeminjamanMapper;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,43 +19,43 @@ public class PeminjamanServiceDatabase implements PeminjamanService {
 	
 	 
 	 @Autowired
-	    private LiteraturMapper literaturMapper;
+	    private PeminjamanMapper peminjamanMapper;
 	 
 	 @Override
-	    public List<LiteratureModel> selectAllLiteratures()
+	    public List<PeminjamanModel> selectAllPeminjaman()
 	    {
-	        log.info ("select all Literatures");
-	        return literaturMapper.selectAllLiteratures();
+	        log.info ("select all peminjaman");
+	        return peminjamanMapper.selectAllPeminjaman();
 	    }
 	 
 	 @Override
-	 public LiteratureModel selectLiterature (Integer id)
+	 public PeminjamanModel selectPeminjaman (Integer id)
 	 {
 	       log.info ("select literature with id: " + id);
-	      return  literaturMapper.selectLiterature(id);
+	      return  peminjamanMapper.selectPeminjaman(id);
 	 }
 
 	 @Override
-	 public void addLiterature (LiteratureModel literature)
+	 public void addPeminjaman (PeminjamanModel peminjaman)
 	 {
-		 log.info ("Literature with id " + literature.getId ()
+		 log.info ("peminjaman with id " + peminjaman.getId ()
 	     + "successfully added.");
-		 literaturMapper.addLiterature (literature);
+		 peminjamanMapper.addPeminjaman(peminjaman);
 	 }
 
 	 @Override
-	 public void updateLiterature (LiteratureModel literature)
+	 public void updatePeminjaman (PeminjamanModel peminjaman)
 	 {
-		 log.info ("Literature with id " + literature.getId()
+		 log.info ("peminjaman with id " + peminjaman.getId()
 	     + "successfully update.");
-		 literaturMapper.updateLiterature (literature);
+		 peminjamanMapper.updatePeminjaman(peminjaman);
 	 }
 
 	@Override
-	public void deleteLiterature(Integer id) {
-		log.info ("Literature with id" + id 
+	public void deletePeminjaman(Integer id) {
+		log.info ("Peminjaman with id" + id 
 				+ "succesfully deleted.");
-		literaturMapper.deleteLiterature(id);
+		peminjamanMapper.deletePeminjaman(id);
 		
 	}
 

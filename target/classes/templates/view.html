@@ -48,12 +48,6 @@
                             <p>List Literature</p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/peminjaman/viewall">
-                            <i class="material-icons">content_paste</i>
-                            <p>List Peminjaman</p>
-                        </a>
-                    </li>
                     
                     
                 </ul>
@@ -72,43 +66,30 @@
                 		<div class="card">
                                 <div class="card-header card-header-warning">
                                     <h4 class="card-title">List Literatur</h4>
-                                    <p class="card-category">View All Literatur</p>
+                                    <p class="card-category">View Literatur</p>
                                 </div>
                                 <div class="card-body table-responsive">
                                     <table class="table table-hover">
                                         <thead class="text-warning">
-                                        	<th>No.</th>
 							        		<th>Judul</th>
 							        		<th>Penulis</th>
 							        		<th>Penerbit</th>
 							        		<th>Jenis Literatur</th>
-							        		<th>Jumlah Literatur</th>
-							        		<th>Action</th>
+							        		<th>Tersedia</th>
                                         </thead>
                                         <tbody>
                                         <tr th:each="literature,iterationStatus: ${literatures}">
-	            <td th:text="${iterationStatus.count}">No. 1</td>
 		       	 
-		       	<td th:text="${literature.judul}"><a th:href="'/literature/view/' + ${literature.id}">Literature Judul</a></td>
+		       	<td th:text="${literature.judul}">Literature Judul</td>
 		       	<td th:text="${literature.penulis}">Literature Penulis</td>
 		       	<td th:text="${literature.penerbit}">Literature Penerbit</td>
 		       	<td th:text="${literature.jenis_literatur}">Literature Jenis</td>
 		       	<td th:text="${literature.jumlah}">Literature Jumlah</td>
-			    <td><a onclick="return confirm('Are you sure?')" th:href="'/literature/hapus/' + ${literature.id}">Delete Data</a> || <a th:href="'/literatur/ubah/' + ${literature.id}">Edit Data</a></td>
-		       
 	       	</tr> 
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-                		  
-                	</div> 
-                	<div class="row">
-                	 <a class="btn btn-warning" href="/literature/add">
-                            Add New Literatur
-                        </a>
-                	</div>
-                </div>
             </div>
            <footer th:replace="fragments/footer :: footer">&copy; 2018 APAP</footer>
         </div>
@@ -133,17 +114,6 @@
 <script type="text/javascript">
     $(document).ready(function() {
 
-        //init wizard
-
-        // demo.initMaterialWizard();
-
-        // Javascript method's body can be found in assets/js/demos.js
-        demo.initDashboardPageCharts();
-
-        demo.initCharts();
-     //   $('#example').DataTable({
-		//	stateSave: true
-		//});
     });
 </script>
 	

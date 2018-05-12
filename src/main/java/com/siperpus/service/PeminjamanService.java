@@ -1,19 +1,18 @@
 package com.siperpus.service;
 
 import java.util.List;
-
-import com.siperpus.model.LiteratureModel;
-import com.siperpus.model.MahasiswaModel;
+ 
+import com.siperpus.model.PeminjamanModel;
 
 public interface PeminjamanService {
-	 List<LiteratureModel> selectAllLiteratures ();
+	 List<PeminjamanModel> selectAllPeminjaman();
 	 
-	 void addLiterature (LiteratureModel literature);
+	 void addPeminjaman (PeminjamanModel peminjaman);
 	 
-	 LiteratureModel selectLiterature (Integer id);
+	 PeminjamanModel selectPeminjaman (Integer id);
 	 
-	 void updateLiterature  (LiteratureModel literature);
+	 void updatePeminjaman  (PeminjamanModel peminjaman);
 	 
-	 void deleteLiterature (Integer id);
+	 void deletePeminjaman (Integer id);
 	 
 }
