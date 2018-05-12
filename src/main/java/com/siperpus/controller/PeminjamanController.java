@@ -42,7 +42,7 @@ public class PeminjamanController {
 	        List<PeminjamanModel> literature = peminjamanDAO.selectAllPeminjaman();
 	        model.addAttribute ("literatures", literature);
 
-	        return "viewall";
+	        return "viewall-peminjaman";
 	    }
 	  
 	  @RequestMapping("/peminjaman/add")
