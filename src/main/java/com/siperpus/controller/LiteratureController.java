@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.siperpus.service.LiteratureService;
 import com.siperpus.model.LiteratureModel;
-import com.siperpus.model.MahasiswaModel;
+
 
 @Controller
 public class LiteratureController {

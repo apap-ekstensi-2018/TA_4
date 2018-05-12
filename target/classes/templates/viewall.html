@@ -85,7 +85,7 @@
                                         <tr th:each="literature,iterationStatus: ${literatures}">
 	            <td th:text="${iterationStatus.count}">No. 1</td>
 		       	 
-		       	<td th:text="${literature.judul}">Literature Judul</td>
+		       	<td th:text="${literature.judul}"><a th:href="'/literature/view/' + ${literature.id}">Literature Judul</a></td>
 		       	<td th:text="${literature.penulis}">Literature Penulis</td>
 		       	<td th:text="${literature.penerbit}">Literature Penerbit</td>
 		       	<td th:text="${literature.jenis_literatur}">Literature Jenis</td>

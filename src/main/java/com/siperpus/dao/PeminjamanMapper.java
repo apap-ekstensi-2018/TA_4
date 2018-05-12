@@ -11,20 +11,9 @@ import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-<<<<<<< HEAD
-
 import com.siperpus.model.LiteratureModel;
 import com.siperpus.model.PeminjamanModel;
 
-@Mapper
-public interface PeminjamanMapper {
-
-	 @Select("select id, id_literatur, username_peminjam, tanggal_peminjaman, tanggal_pengembalian, id_surat, status_peminjaman from peminjaman_literatur where id = #{id}")
-	  PeminjamanModel selectPeminjaman (@Param("id") Integer id);
-	 
-@Select("SELECT * FROM peminjaman")
-List<PeminjamanModel> selectAllPeminjaman();
-=======
 import com.siperpus.model.LiteratureModel;
 
 @Mapper
@@ -50,7 +39,9 @@ public interface PeminjamanMapper {
 		@Result(property="jenis_literatur",column="jenis_literatur"),
 		@Result(property="jumlah",column="jumlah")})
 	LiteratureModel selectLiterature (@Param("id") Integer id); 
->>>>>>> 23f695539d594836ba4a2900ec3e59525d761d94
+
+@Select("select id, id_literatur, username_peminjam, tanggal_peminjaman, tanggal_pengembalian, id_surat, status_peminjaman from peminjaman_literatur where id = #{id}")
+PeminjamanModel selectPeminjaman (@Param("id") Integer id);
 
 
 }

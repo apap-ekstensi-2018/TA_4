@@ -1,6 +1,6 @@
 package com.siperpus.controller;
 
-<<<<<<< HEAD
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,46 +14,9 @@ import com.siperpus.service.PeminjamanService;
 import lombok.extern.slf4j.Slf4j;
 import com.siperpus.model.PeminjamanModel;
 
-@Controller
-public class PeminjamanController {
-
-	  
-	@Autowired
-	PeminjamanService peminjamanDAO;
-	
-	
-	@RequestMapping("/peminjaman/view")
-    public String view (Model model,
-            @RequestParam(value = "id", required = false) Integer id)
-    {
-        PeminjamanModel peminjaman = peminjamanDAO.selectPeminjaman(id);
-
-        if (peminjaman != null) {
-            model.addAttribute ("peminjaman",peminjaman);
-            return "view";
-        } else {
-            model.addAttribute ("id",id);
-            return "not-found";
-        }
-    }
 
 
-    @RequestMapping("/peminjaman/view/{id}")
-    public String viewPath (Model model,
-            @PathVariable(value = "id") Integer id)
-    {
-        PeminjamanModel peminjaman = peminjamanDAO.selectPeminjaman(id);
 
-        if (peminjaman != null) {
-            model.addAttribute ("peminjaman", peminjaman);
-            return "view";
-        } else {
-            model.addAttribute ("id", id);
-            return "not-found";
-        }
-    }
-
-=======
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +31,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.siperpus.service.LiteratureService;
 import com.siperpus.model.LiteratureModel;
-import com.siperpus.model.MahasiswaModel;
+
 
 @Controller
 public class PeminjamanController {
@@ -77,6 +40,8 @@ public class PeminjamanController {
 	@Autowired
     LiteratureService literatureDAO;
 	
+	@Autowired
+	PeminjamanService peminjamanDAO;
 	  
 	  
 	  @RequestMapping("/peminjaman/viewall")
@@ -160,10 +125,38 @@ public class PeminjamanController {
 
 	        return "viewall"; 
 	  }
->>>>>>> 23f695539d594836ba4a2900ec3e59525d761d94
 
+	  	@RequestMapping("/peminjaman/view")
+	    public String view (Model model,
+	            @RequestParam(value = "id", required = false) Integer id)
+	    {
+	        PeminjamanModel peminjaman = peminjamanDAO.selectPeminjaman(id);
+
+	        if (peminjaman != null) {
+	            model.addAttribute ("peminjaman",peminjaman);
+	            return "view";
+	        } else {
+	            model.addAttribute ("id",id);
+	            return "not-found";
+	        }
+	    }
+
+
+	    @RequestMapping("/peminjaman/view/{id}")
+	    public String viewPath (Model model,
+	            @PathVariable(value = "id") Integer id)
+	    {
+	        PeminjamanModel peminjaman = peminjamanDAO.selectPeminjaman(id);
+
+	        if (peminjaman != null) {
+	            model.addAttribute ("peminjaman", peminjaman);
+	            return "view";
+	        } else {
+	            model.addAttribute ("id", id);
+	            return "not-found";
+	        }
 	  
 	  
  
 	 
-}
+}}
