@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f9db483a8619e9ade665e198c86b745d01f2a3ee
 	<head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
@@ -20,6 +23,7 @@
      <link href="/assets-for-demo/demo.css" rel="stylesheet" />
     <!-- iframe removal -->
 </head>
+<<<<<<< HEAD
 
 <body class="">
     <div class="wrapper">
@@ -137,3 +141,151 @@
     </body>
 </html>
 >>>>>>> f6c0cd2b75d131f70c7ec6c5069e37bdd41d857e
+=======
+
+<body class="">
+    <div class="wrapper">
+        <div class="sidebar" data-color="purple" data-background-color="white" >
+            <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+            <div class="logo">
+                <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+                    SIPERPUS TA-4  
+                </a>
+            </div>
+            <div class="sidebar-wrapper" >
+             <ul class="nav">
+                    <li class="nav-item  ">
+                        <a class="nav-link" href="/">
+                            <i class="material-icons">dashboard</i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                     
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/literature/viewall">
+                            <i class="material-icons">description</i>
+                            <p>Detail Peminjaman</p>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+            
+        </div>
+        <div class="main-panel">
+            <!-- Navbar -->
+            <nav class="sidebar-wrapper" th:replace="fragments/header :: header"></nav>
+           
+            <!-- End Navbar -->
+            <div class="content">
+                <div class="container-fluid">
+                	<div class="row">
+                	
+                		<div class="card">
+                                <div class="card-header card-header-warning">
+                                    <h4 class="card-title">Peminjaman</h4>
+                                    <p class="card-category">View Detail Peminjaman</p>
+                                </div>
+                                <div class="card-body table-responsive">
+                                    <table class="table table-hover">
+                                       	
+    <tbody>
+    <tr>
+      
+      <td th:text="'ID Peminjaman' "></td>
+      <td th:text= "${peminjaman.id}"></td>
+    </tr>
+    <tr>
+      
+      <td th:text="'ID Liteatur' "></td>
+      <td th:text= "${peminjaman.id_literatur}"></td>
+    </tr>
+    <tr>
+      
+            <td th:text="'Username Peminjam' "></td>
+      <td th:text= "${peminjaman.id}"></td>
+    </tr>
+    <tr>
+      
+      <td th:text="'Tanggal Peminjaman' "></td>
+      <td th:text= "${peminjaman.username_peminjam}"></td>
+    </tr>
+
+
+    <tr>
+      
+      <td th:text="'Tanggal Pengembalian' "></td>
+      <td th:text= "${peminjaman.tanggal_pengembalian}"></td>
+    </tr>
+    <tr>
+      
+      <td th:text="'ID Surat' "></td>
+      <td th:text= "${peminjaman.id_surat}"></td>
+    </tr>
+    <tr>
+      
+      <td th:text="'Username Peminjam' "></td>
+      <td th:text= "${peminjaman.id}"></td>
+    </tr>
+    <tr>
+      
+      <td th:text="'Status Peminjaman' "></td>
+      <td th:text= "${peminjaman.status_peminjaman}"></td>
+    </tr>
+
+
+   
+  </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                		  
+                	</div> 
+                	
+                </div>
+            </div>
+           <footer th:replace="fragments/footer :: footer">&copy; 2018 APAP</footer>
+        </div>
+    </div>
+</body>
+<!--   Core JS Files   -->
+<script src="/js/core/jquery.min.js"></script>
+<script src="/js/core/popper.min.js"></script>
+<script src="/js/bootstrap-material-design.js"></script>
+<script src="/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<!--  Charts Plugin, full documentation here: https://gionkunz.github.io/chartist-js/ -->
+<script src="/js/plugins/chartist.min.js"></script>
+<!-- Library for adding dinamically elements -->
+<script src="/js/plugins/arrive.min.js" type="text/javascript"></script>
+<!--  Notifications Plugin, full documentation here: http://bootstrap-notify.remabledesigns.com/    -->
+<script src="/js/plugins/bootstrap-notify.js"></script>
+<!-- Material Dashboard Core initialisations of plugins and Bootstrap Material Design Library -->
+<script src="/js/material-dashboard.js?v=2.0.0"></script>
+<!-- demo init -->
+  <script src="/js/plugins/demo.js"></script>
+  <script th:src="@{/DataTables/datatables-1.10.16/js/jquery.dataTables.min.js}"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        //init wizard
+
+        // demo.initMaterialWizard();
+
+        // Javascript method's body can be found in assets/js/demos.js
+        demo.initDashboardPageCharts();
+
+        demo.initCharts();
+     //   $('#example').DataTable({
+		//	stateSave: true
+		//});
+    });
+</script>
+	
+</html>
+>>>>>>> f9db483a8619e9ade665e198c86b745d01f2a3ee
