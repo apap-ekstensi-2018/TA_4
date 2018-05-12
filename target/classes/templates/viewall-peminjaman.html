@@ -42,13 +42,18 @@
                         </a>
                     </li>
                      
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="/literature/viewall">
                             <i class="material-icons">content_paste</i>
                             <p>List Literature</p>
                         </a>
                     </li>
-                    
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/literature/viewall">
+                            <i class="material-icons">content_paste</i>
+                            <p>List Peminjaman</p>
+                        </a>
+                    </li>
                     
                 </ul>
             </div>
@@ -57,9 +62,7 @@
         <div class="main-panel">
             <!-- Navbar -->
             <nav class="sidebar-wrapper" th:replace="fragments/header :: header"></nav>
-           <h3 th:text="'id = ' + ${peminjaman.id}">id peminjaman</h3>
-       	<h3 th:text="'id_liteatur = ' + ${peminjaman.id_literatur}">id literatur </h3>
-       	<h3 th:text="'username_peminjam = ' + ${peminjaman.username_peminjam}">Username Peminjam</h3>
+           
             <!-- End Navbar -->
             <div class="content">
                 <div class="container-fluid">
@@ -85,7 +88,7 @@
                                         <tr th:each="literature,iterationStatus: ${literatures}">
 	            <td th:text="${iterationStatus.count}">No. 1</td>
 		       	 
-		       	<td th:text="${literature.judul}"><a th:href="'/literature/view/' + ${literature.id}">Literature Judul</a></td>
+		       	<td th:text="${literature.judul}">Literature Judul</td>
 		       	<td th:text="${literature.penulis}">Literature Penulis</td>
 		       	<td th:text="${literature.penerbit}">Literature Penerbit</td>
 		       	<td th:text="${literature.jenis_literatur}">Literature Jenis</td>
