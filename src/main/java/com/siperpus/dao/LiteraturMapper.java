@@ -38,4 +38,5 @@ public interface LiteraturMapper {
 	LiteratureModel selectLiterature (@Param("id") Integer id); 
 
 
+
 }

@@ -16,5 +16,8 @@ public class LiteratureModel {
 	private String penerbit;
 	private String jenis_literatur;
 	private String jumlah;
+
 	
 }
+
+
