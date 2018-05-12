@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>View peminjaman by id</title>
+    </head>
+    <body>
+    	
+    	
+       	<h3 th:text="'id = ' + ${peminjaman.id}">id peminjaman</h3>
+       	<h3 th:text="'id_liteatur = ' + ${peminjaman.id_literatur}">id literatur </h3>
+       	<h3 th:text="'username_peminjam = ' + ${peminjaman.username_peminjam}">Username Peminjam</h3>
+       	<h3 th:text="'tanggal_peminjaman = ' + ${peminjaman.tanggal_peminjaman}">tanggal peminjaman</h3>
+       	<h3 th:text="'tanggal_pengembalian = ' + ${peminjaman.tanggal_pengembalian}">tanggal pengembalian </h3>
+       	<h3 th:text="'id_surat = ' + ${peminjaman.id_surat}">id surat</h3>
+       	<h3 th:text="'status_peminjaman = ' + ${peminjaman.status_peminjaman}">status peminjaman</h3>
+    </body>
+</html>
+
