@@ -1,6 +1,7 @@
 package com.siperpus.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -97,7 +98,7 @@ public class LiteratureController {
 	           
 	    }
 	  
-	  	  @RequestMapping(value = "/literature/hapus/{id_literatur}", method = RequestMethod.GET)
+	  @RequestMapping(value = "/literature/hapus/{id_literatur}", method = RequestMethod.GET)
 	  public String delete(Model model, @PathVariable(value = "id_literatur") Integer id ) {
 		  literatureDAO.deleteLiterature(id);
 		  
@@ -105,6 +106,23 @@ public class LiteratureController {
 	        model.addAttribute ("literatures", literature);
 
 	        return "viewall"; 
+	  }
+	  
+	  @RequestMapping (value ="/literatur/view/{id}")
+	  public String detailLiterature(Model model, @PathVariable Optional <Integer> id) {
+		  if(id.isPresent()) {
+			LiteratureModel literature=literatureDAO.selectLiterature(id.get());   
+			if(id==null) {
+				model.addAttribute("id",id.get());
+				return "not-found";	
+			}else {
+				model.addAttribute("id", id.get());
+				return "view";
+			}
+		  }else {
+			  model.addAttribute("id","");
+			  return "not-found";
+		  }
 	  }
 
 	  
