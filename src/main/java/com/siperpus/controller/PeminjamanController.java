@@ -102,12 +102,12 @@ public class PeminjamanController {
 	        	if (totalAvailable > 0) {
 	        		// valid to request
 	        		// check literature type
-		        	if (modelLiteratur.getJenis_literatur()=="Skripsi"||modelLiteratur.getJenis_literatur()=="Tesis"
-		        			||modelLiteratur.getJenis_literatur()=="Disertasi") {
+		        	if (modelLiteratur.getJenis_literatur().equals("Skripsi")||modelLiteratur.getJenis_literatur().equals("Tesis")
+		        			||modelLiteratur.getJenis_literatur().equals("Disertasi")) {
 		        		// validate id surat
 		        		SuratModel suratModel = peminjamanDAO.selectSurat(id_surat);
 		        		
-		        		if (suratModel.getStatus_surat()!="disetujui") {
+		        		if (!suratModel.getStatus_surat().equals("Selesai")) {
 		        			model.addAttribute("error", "Status surat belum disetujui");
 			        		
 		        			return "failed-peminjaman";

@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.15)
 # Database: siperpus_4
-# Generation Time: 2018-05-05 14:59:20 +0000
+# Generation Time: 2018-05-13 16:09:41 +0000
 # ************************************************************
 
 
@@ -30,7 +30,7 @@ CREATE TABLE `literatur` (
   `judul` varchar(50) DEFAULT NULL,
   `penulis` varchar(50) DEFAULT NULL,
   `penerbit` varchar(50) DEFAULT NULL,
-  `jenis_literatur` varchar(50) DEFAULT NULL,
+  `jenis_literatur` varchar(11) DEFAULT NULL,
   `jumlah` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -40,10 +40,7 @@ LOCK TABLES `literatur` WRITE;
 
 INSERT INTO `literatur` (`id`, `judul`, `penulis`, `penerbit`, `jenis_literatur`, `jumlah`)
 VALUES
-	(2,'klkn','nklm','lkmlk','klk','33'),
-	(4,'judul 45655','fd','fd','sdf','23'),
-	(5,'Judul 123','nkj','mlk','89','23'),
-	(6,'cip','d','sad','sad','4');
+	(1,'Tes 32','fdasd','gdsf','Disertasi','21');
 
 /*!40000 ALTER TABLE `literatur` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -55,7 +52,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `peminjaman_literatur`;
 
 CREATE TABLE `peminjaman_literatur` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_literatur` int(11) NOT NULL,
   `username_peminjam` varchar(50) NOT NULL,
   `tanggal_peminjaman` date DEFAULT NULL,
@@ -69,6 +66,18 @@ CREATE TABLE `peminjaman_literatur` (
   CONSTRAINT `peminjaman_literatur_ibfk_2` FOREIGN KEY (`username_peminjam`) REFERENCES `user_account` (`username`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+LOCK TABLES `peminjaman_literatur` WRITE;
+/*!40000 ALTER TABLE `peminjaman_literatur` DISABLE KEYS */;
+
+INSERT INTO `peminjaman_literatur` (`id`, `id_literatur`, `username_peminjam`, `tanggal_peminjaman`, `tanggal_pengembalian`, `status_peminjaman`, `id_surat`)
+VALUES
+	(1,1,'1406575815','2018-05-05','2018-05-06','Belum Diproses',123),
+	(2,1,'1406575815','2018-05-05','2018-05-06','Belum Diproses',23234),
+	(3,1,'1290578781','2018-05-13','2018-05-24','Belum Diproses',7),
+	(4,1,'1290578781','2018-05-13','2018-05-13','Belum Diproses',6);
+
+/*!40000 ALTER TABLE `peminjaman_literatur` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table pengadaan_literatur
@@ -77,17 +86,28 @@ CREATE TABLE `peminjaman_literatur` (
 DROP TABLE IF EXISTS `pengadaan_literatur`;
 
 CREATE TABLE `pengadaan_literatur` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username_requester` varchar(50) NOT NULL,
   `judul` varchar(50) DEFAULT NULL,
   `penulis` varchar(50) DEFAULT NULL,
   `penerbit` varchar(50) DEFAULT NULL,
   `status` varchar(50) DEFAULT NULL,
+  `filename` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `username_requester` (`username_requester`),
   CONSTRAINT `pengadaan_literatur_ibfk_1` FOREIGN KEY (`username_requester`) REFERENCES `user_account` (`username`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+LOCK TABLES `pengadaan_literatur` WRITE;
+/*!40000 ALTER TABLE `pengadaan_literatur` DISABLE KEYS */;
+
+INSERT INTO `pengadaan_literatur` (`id`, `username_requester`, `judul`, `penulis`, `penerbit`, `status`, `filename`)
+VALUES
+	(1,'1290578781','tes','fdsd','fdsf','Request','PR2_1606954905_MuhammadKamal.pdf'),
+	(2,'1290578781','sd','gds','fsdf','Request','PR2_1606954905_MuhammadKamal.pdf');
+
+/*!40000 ALTER TABLE `pengadaan_literatur` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table user_account
