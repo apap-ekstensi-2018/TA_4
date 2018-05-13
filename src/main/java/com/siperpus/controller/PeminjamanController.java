@@ -45,7 +45,7 @@ public class PeminjamanController {
 	        return "viewall-peminjaman";
 	    }
 	  
-	  @RequestMapping("/peminjaman/add")
+	  @RequestMapping("/peminjaman/tambah")
 	    public String add ()
 	    {
 	        return "form-add-peminjaman";

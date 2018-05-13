@@ -15,9 +15,8 @@
     <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
     <link rel="stylesheet" href="/css/material-dashboard.css?v=2.0.0" />
     <!-- Documentation extras -->
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-     <link href="/assets-for-demo/demo.css" rel="stylesheet" />
-    <!-- iframe removal -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-material-datetimepicker.css" />
+    
 </head>
 
 <body class="">
@@ -33,7 +32,30 @@
                     SIPERPUS TA-4  
                 </a>
             </div>
-            <div class="sidebar-wrapper" th:replace="fragments/sidebar :: sidebar"></div>
+            <div class="sidebar-wrapper" >
+             <ul class="nav">
+                    <li class="nav-item  ">
+                        <a class="nav-link" href="/">
+                            <i class="material-icons">dashboard</i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                     
+                    <li class="nav-item">
+                        <a class="nav-link" href="/literature/viewall">
+                            <i class="material-icons">content_paste</i>
+                            <p>List Literature</p>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/literature/viewall">
+                            <i class="material-icons">content_paste</i>
+                            <p>List Peminjaman</p>
+                        </a>
+                    </li>
+                    
+                </ul>
+                </div>
             
         </div>
         <div class="main-panel">
@@ -47,11 +69,11 @@
                         <div class="col-md-8">
                             <div class="card">
                                 <div class="card-header card-header-primary">
-                                    <h4 class="card-title">Tambah Literature</h4>
-                                    <p class="card-category">Lengkapi form isian literature</p>
+                                    <h4 class="card-title">Create Peminjaman Baru</h4>
+                                    <p class="card-category">Lengkapi form isian peminjaman</p>
                                 </div>
                                 <div class="card-body">
-                                	<form method="post" action="/literature/add/submit">
+                                	<form method="post" action="/peminjaman/add/submit">
 										 
 										<div class="divider col s12 l6"></div>
 										<br/>
@@ -59,41 +81,33 @@
 										<div class="row">
 										 	<div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="bmd-label-floating">Judul Buku</label>
+                                                    <label class="bmd-label-floating">Judul Literatur</label>
                                                     <input type="text" class="form-control" name="judul" id="judul" />
+                                                    <input type="hidden" name="id_literatur" id="id_literatur" />
                                                 </div>
                                             </div>
 										</div>
 										<div class="row">
 										 	<div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="bmd-label-floating">Penulis</label>
-                                                    <input type="text" class="form-control" name="penulis" id="penulis" />
+                                                    <label class="bmd-label-floating">Tanggal Peminjaman</label>
+                                                    <input type="text" class="form-control" name="tanggal_peminjaman" id="tanggal_peminjaman" />
                                                 </div>
                                             </div>
 										</div>
 										<div class="row">
 										 	<div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="bmd-label-floating">Penerbit</label>
+                                                    <label class="bmd-label-floating">Tanggal Pengembalian</label>
+                                                    <input type="text" class="form-control" name="tanggal_pengembalian" id="tanggal_pengembalian" />
+                                                </div>
+                                            </div>
+										</div>
+										<div class="row">
+										 	<div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Surat Referensi</label> 
                                                     <input type="text" class="form-control" name="penerbit" id="penerbit" />
-                                                </div>
-                                            </div>
-										</div>
-										<div class="row">
-										 	<div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label class="bmd-label-floating">Jenis Literature</label>
-                                                    <select name="jenis_literatur" id="jenis_literatur" class="form-control">
-                                                    	<option value="jurnal">Jurnal</option>
-                                                    	<option value="buku">Buku</option>
-                                                    	<option value="referensi">Referensi</option>
-                                                    	<option value="publikasi">Publikasi</option>
-                                                    	<option value="Tugas Akhir">Tugas Akhir</option>
-                                                    	<option value="Skripsi">Skripsi</option>
-                                                    	<option value="Tesis">Tesis</option>
-                                                    	<option value="Disertasi">Disertasi</option>
-                                                    </select>
                                                 </div>
                                             </div>
 										</div>
@@ -139,8 +153,9 @@
 <script src="/js/plugins/arrive.min.js" type="text/javascript"></script>
 <!--  Notifications Plugin, full documentation here: http://bootstrap-notify.remabledesigns.com/    -->
 <script src="/js/plugins/bootstrap-notify.js"></script>
-<!-- Material Dashboard Core initialisations of plugins and Bootstrap Material Design Library -->
-<script src="/js/material-dashboard.js?v=2.0.0"></script>
+ 
+<script src="/js/moment.js"></script>
+<script src="/js/bootstrap-material-datetimepicker.js"></script>
  
 <script type="text/javascript">
     $(document).ready(function() {
@@ -153,7 +168,9 @@
 //        demo.initDashboardPageCharts();
 
   //      demo.initCharts();
-    	 
+    	$('#tanggal_peminjaman').bootstrapMaterialDatePicker({ weekStart : 0, time: false });
+    	$('#tanggal_pengembalian').bootstrapMaterialDatePicker({ weekStart : 0, time: false });
+    	
     });
 </script>
 	
