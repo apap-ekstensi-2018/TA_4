@@ -15,7 +15,8 @@ import com.siperpus.service.PeminjamanService;
 
 import lombok.extern.slf4j.Slf4j;
 import com.siperpus.model.PeminjamanModel;
- 
+import com.siperpus.model.SuratModel;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,21 +66,60 @@ public class PeminjamanController {
 	            @RequestParam(value = "id_surat", required = false) int id_surat)
 	    {
 	        PeminjamanModel modelNew = new PeminjamanModel();
-	        modelNew.setId_literatur(id_literatur);
-	        modelNew.setTanggal_peminjaman(tanggal_peminjaman);
-	        modelNew.setTanggal_pengembalian(tanggal_pengembalian);
-	        modelNew.setStatus_peminjaman("Belum Diproses");
-	        modelNew.setId_surat(id_surat);
 	        
-	        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	        // check availability if type skripsi/tesis/disertasi
+	        LiteratureModel modelLiteratur = literatureDAO.selectLiterature(id_literatur);
+	        
+	        if (modelLiteratur!=null) {
+	        	// check available jumlah
+	        	List<PeminjamanModel> listPeminjaman = peminjamanDAO.selectPeminjamanByIdLiteratur(modelLiteratur.getId());
+	        	
+	        	int totalAvailable = Integer.parseInt(modelLiteratur.getJumlah()) - listPeminjaman.size();
+	        	
+	        	if (totalAvailable > 0) {
+	        		// valid to request
+	        		// check literature type
+		        	if (modelLiteratur.getJenis_literatur()=="Skripsi"||modelLiteratur.getJenis_literatur()=="Tesis"
+		        			||modelLiteratur.getJenis_literatur()=="Disertasi") {
+		        		// validate id surat
+		        		SuratModel suratModel = peminjamanDAO.selectSurat(id_surat);
+		        		
+		        		if (suratModel.getStatus_surat()!="disetujui") {
+		        			model.addAttribute("error", "Status surat belum disetujui");
+			        		
+		        			return "failed-peminjaman";
+		        		}
+		        	}
+		        	 
+		        	  modelNew.setId_literatur(id_literatur);
+		  	        modelNew.setTanggal_peminjaman(tanggal_peminjaman);
+		  	        modelNew.setTanggal_pengembalian(tanggal_pengembalian);
+		  	        modelNew.setStatus_peminjaman("Belum Diproses");
+		  	        modelNew.setId_surat(id_surat);
+		  	        
+		  	        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-	        String userName = auth.getName();
-	        modelNew.setUsername_peminjam(userName);
-	         System.out.println("Model peminjaman" + modelNew);
-	         
-	        peminjamanDAO.addPeminjaman(modelNew);
-	        
-	        return "success-add-peminjaman"; 
+		  	        String userName = auth.getName();
+		  	        modelNew.setUsername_peminjam(userName);
+		  	         System.out.println("Model peminjaman" + modelNew);
+		  	         
+		  	        peminjamanDAO.addPeminjaman(modelNew);
+		  	        
+		  	        return "success-add-peminjaman"; 
+	        	}
+	        	else {
+	        		model.addAttribute("error", "Literatur sudah tidak available");
+	        		
+	        		return "success-add-peminjaman"; 
+	        	}
+	        	
+	        }
+	        else {
+	        	model.addAttribute("error", "Literatur tidak ditemukan");
+        		
+	        	return "failed-peminjaman";
+	        }
+	      
 	    }
 	  
 	  @RequestMapping("/peminjaman/ubah/{id_literatur}")

@@ -2,10 +2,13 @@ package com.siperpus.service;
 
 import java.util.List; 
 import com.siperpus.model.PeminjamanModel;
+import com.siperpus.model.SuratModel;
    
 public interface PeminjamanService { 
 
 	 List<PeminjamanModel> selectAllPeminjaman();
+	 List<PeminjamanModel> selectPeminjamanByIdLiteratur(int id_literatur);
+	 
 	 
 	 void addPeminjaman (PeminjamanModel peminjaman);
 	PeminjamanModel selectPeminjaman (Integer id); 
@@ -15,4 +18,6 @@ public interface PeminjamanService {
 	 void updateStatusPeminjaman (PeminjamanModel peminjaman);
 	 
 	 boolean isPeminjamanOverdue(String user_account);
+	 
+	 SuratModel selectSurat(int no_surat);
 }

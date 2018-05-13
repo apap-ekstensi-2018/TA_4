@@ -6,8 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
  
 import com.siperpus.model.PeminjamanModel;
+import com.siperpus.model.SuratModel;
 import com.siperpus.service.PeminjamanServiceDatabase; 
-import com.siperpus.dao.PeminjamanMapper; 
+import com.siperpus.dao.PeminjamanMapper;
+import com.siperpus.dao.SuratDAO;
 import com.siperpus.service.PeminjamanServiceDatabase; 
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,7 +20,8 @@ public class PeminjamanServiceDatabase implements PeminjamanService {
 	@Autowired
 	PeminjamanMapper peminjamanMapper;
 	
-	
+	@Autowired
+	SuratDAO suratDao;
 
 	@Override
 	 public PeminjamanModel selectPeminjaman (Integer id)
@@ -76,6 +79,18 @@ public class PeminjamanServiceDatabase implements PeminjamanService {
 		else {
 			return false;
 		} 
+	}
+	
+	@Override
+	public 	 SuratModel selectSurat(int no_surat) {
+		return suratDao.selectSurat(no_surat);
+		
+	}
+	
+	@Override
+	public 	 List<PeminjamanModel> selectPeminjamanByIdLiteratur(int id_literatur){
+	return peminjamanMapper.selectPeminjamanByIdLiteratur(id_literatur);
+	
 	}
 	
 }
