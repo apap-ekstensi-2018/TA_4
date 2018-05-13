@@ -184,10 +184,13 @@ public class PeminjamanController {
 	    public String viewPath (Model model,
 	            @PathVariable(value = "id_literatur") int id_literatur)
 	    {
+	    	
 	        PeminjamanModel peminjaman = peminjamanDAO.selectPeminjaman(id_literatur);
-
+	        List<PeminjamanModel> peminjamanlist = peminjamanDAO.selectPeminjamanByIdLiteratur(id_literatur);
+	        
 	        if (peminjaman != null) {
 	            model.addAttribute ("peminjaman", peminjaman);
+	            model.addAttribute ("peminjamanlist", peminjamanlist);
 	            return "view";
 	        } else {
 	            model.addAttribute ("id_literatur", id_literatur);

@@ -49,7 +49,7 @@
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="/literature/viewall">
+                        <a class="nav-link" href="/peminjaman/viewall">
                             <i class="material-icons">content_paste</i>
                             <p>List Peminjaman</p>
                         </a>
@@ -136,7 +136,51 @@
                             </div>
                 		  
                 	</div> 
+                	<div class="row">
                 	
+                		<div class="card">
+                                <div class="card-header card-header-warning">
+                                    <h4 class="card-title">List Peminjaman</h4>
+                                    <p class="card-category">View All Peminjaman</p>
+                                </div>
+                                <div class="card-body table-responsive">
+                                    <table class="table table-hover">
+                                        <thead class="text-warning">
+                                        	<th>No.</th>
+                                        	<th>Surat Referensi</th>
+							        		<th>Judul Literatur</th>
+							        		<th>Peminjamn</th>
+							        		<th>Tanggal Peminjaman</th>
+							        		<th>Tanggal Pengembalian</th>
+							        		<th>Status Peminjaman</th>
+							        		<th>Action</th>
+                                        </thead>
+                                        <tbody>
+                                         <tr th:each="peminjaman,iterationStatus: ${peminjamanlist}">
+                                            <td th:text="${iterationStatus.count}">No. 1</td>
+											<td th:text="${peminjaman.id_surat}">id surat
+                                                Peminjam</td>
+                                            <td><a th:href="'/peminjaman/view/' + ${peminjaman.id_literatur}" >
+													<div th:text="${peminjaman.id_literatur}"></div>
+												</a>
+											</td>
+                                            <td th:text="${peminjaman.username_peminjam}">Username
+                                                Peminjam</td>
+                                            <td th:text="${peminjaman.tanggal_peminjaman}">Tanggal
+                                                Peminjaman</td>
+                                            <td th:text="${peminjaman.tanggal_pengembalian}">Tanggal
+                                                Pengembalian</td>
+                                            <td th:text="${peminjaman.status_peminjaman}">Peminjaman Id Surat</td>
+                                            <td><a th:href="'/peminjaman/ubah/' + ${peminjaman.id}">Edit
+                                                    Data</a></td>
+                                    </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                		  
+                	</div> 
                 </div>
             </div>
            <footer th:replace="fragments/footer :: footer">&copy; 2018 APAP</footer>
