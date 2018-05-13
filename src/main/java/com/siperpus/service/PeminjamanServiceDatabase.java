@@ -93,4 +93,8 @@ public class PeminjamanServiceDatabase implements PeminjamanService {
 	
 	}
 	
+	@Override
+	public 	 List<PeminjamanModel> selectPeminjamanByUserPeminjam (String username_peminjam){
+		return peminjamanMapper.selectPeminjamanByUserPeminjam(username_peminjam);
+	}
 }

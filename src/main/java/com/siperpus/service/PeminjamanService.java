@@ -1,6 +1,9 @@
 package com.siperpus.service;
 
-import java.util.List; 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.siperpus.model.PeminjamanModel;
 import com.siperpus.model.SuratModel;
    
@@ -20,4 +23,5 @@ public interface PeminjamanService {
 	 boolean isPeminjamanOverdue(String user_account);
 	 
 	 SuratModel selectSurat(int no_surat);
+	 List<PeminjamanModel> selectPeminjamanByUserPeminjam (String username_peminjam);  
 }

@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.siperpus.service.PeminjamanService;
+import com.siperpus.service.UserAccountService;
 
 import lombok.extern.slf4j.Slf4j;
 import com.siperpus.model.PeminjamanModel;
 import com.siperpus.model.SuratModel;
+import com.siperpus.model.UserAccountModel;
 
 import java.util.List;
 
@@ -41,11 +43,32 @@ public class PeminjamanController {
 	@Autowired
     LiteratureService literatureDAO;
 	
+	@Autowired
+	UserAccountService userAccountSvc;
+	
 	  @RequestMapping("/peminjaman/viewall")
 	    public String view (Model model)
 	    {
-	        List<PeminjamanModel> literature = peminjamanDAO.selectAllPeminjaman();
-	        model.addAttribute ("literatures", literature);
+		  // check role user login
+		  Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+	        String userName = auth.getName();
+	        UserAccountModel userModel = userAccountSvc.selectUserAccount(userName);
+	        
+	        // if staff, show all
+	        if (userModel != null) {
+	        	if (userModel.getRole()=="ROLE_STAF") {
+	        		// show all
+	        		List<PeminjamanModel> peminjaman = peminjamanDAO.selectAllPeminjaman();
+	       	        model.addAttribute ("peminjaman", peminjaman);
+	        	}
+	        	else {
+	        		// show by login user
+	        		List<PeminjamanModel> peminjaman = peminjamanDAO.selectPeminjamanByUserPeminjam(userName);
+	       	        model.addAttribute ("peminjaman", peminjaman);
+	        	}
+	        }
+	     
 
 	        return "viewall-peminjaman";
 	    }

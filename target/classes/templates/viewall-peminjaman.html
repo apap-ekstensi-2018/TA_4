@@ -79,7 +79,7 @@
                                         	<th>No.</th>
                                         	<th>Surat Referensi</th>
 							        		<th>Judul Literatur</th>
-							        		<th>NPM Peminjamn</th>
+							        		<th>Peminjamn</th>
 							        		<th>Tanggal Peminjaman</th>
 							        		<th>Tanggal Pengembalian</th>
 							        		<th>Status Peminjaman</th>
@@ -88,14 +88,15 @@
                                         <tbody>
                                          <tr th:each="peminjaman,iterationStatus: ${peminjaman}">
                                             <td th:text="${iterationStatus.count}">No. 1</td>
-
+											<td th:text="${peminjaman.id_surat}">id surat
+                                                Peminjam</td>
                                             <td><a th:href="'/peminjaman/view/' + ${peminjaman.id_literatur}" >
 													<div th:text="${peminjaman.id_literatur}"></div>
 												</a>
 											</td>
                                             <td th:text="${peminjaman.username_peminjam}">Username
                                                 Peminjam</td>
-                                            <td th:text="${peminjaman.tanggal_pemijaman}">Tanggal
+                                            <td th:text="${peminjaman.tanggal_peminjaman}">Tanggal
                                                 Peminjaman</td>
                                             <td th:text="${peminjaman.tanggal_pengembalian}">Tanggal
                                                 Pengembalian</td>
