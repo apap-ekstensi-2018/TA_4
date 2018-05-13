@@ -26,21 +26,17 @@ public interface PeminjamanMapper {
  @Select("SELECT * FROM peminjaman_literatur")
  List<PeminjamanModel> selectAllPeminjaman();
 
- @Select("SELECT * FROM peminjaman_literatur where id_literatur=#{id_literatur}")
- List<PeminjamanModel> selectPeminjamanByIdLiteratur(@Param("id_literatur") Integer id_literatur); 
-
-//@Select ("SELECT * FROM peminjaman_literatur WHERE id = #{id}")
-
-<<<<<<< HEAD
+ 
+ 
 @Select("select id, id_literatur, username_peminjam, tanggal_peminjaman, tanggal_pengembalian, id_surat, status_peminjaman from peminjaman_literatur where id = #{id}")
 	PeminjamanModel selectPeminjaman (@Param("id") Integer id); 
-
-
-=======
+ 
 @Select("select id, id_literatur, username_peminjam, tanggal_peminjaman, tanggal_pengembalian, id_surat, status_peminjaman from peminjaman_literatur where id_literatur = #{id_literatur}")
-	PeminjamanModel selectPeminjaman (@Param("id_literatur") int id_literatur);  
->>>>>>> c1392c994dd43c16efaff5f2d6da39e704af5360
+	PeminjamanModel selectPeminjamanByIdLiteratur (@Param("id_literatur") int id_literatur);  
 
+@Select("select id, id_literatur, username_peminjam, tanggal_peminjaman, tanggal_pengembalian, id_surat, status_peminjaman from peminjaman_literatur where id_literatur = #{id_literatur}")
+List<PeminjamanModel> selectPeminjamanByIdLiteraturList (@Param("id_literatur") int id_literatur);  
+ 
 @Select("select id, id_literatur, username_peminjam, tanggal_peminjaman, tanggal_pengembalian, id_surat, status_peminjaman from peminjaman_literatur "
 		+ " where status_peminjaman=#{status} and username_peminjam = #{npm}")
 List<PeminjamanModel> selectPeminjamanByUserAccountAndStatus (@Param("npm") String npm, @Param("status") String status);  

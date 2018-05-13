@@ -89,7 +89,7 @@ public class PeminjamanServiceDatabase implements PeminjamanService {
 	
 	@Override
 	public 	 List<PeminjamanModel> selectPeminjamanByIdLiteratur(int id_literatur){
-	return peminjamanMapper.selectPeminjamanByIdLiteratur(id_literatur);
+	return peminjamanMapper.selectPeminjamanByIdLiteraturList(id_literatur);
 	
 	}
 	
