@@ -100,7 +100,8 @@
                                             <td th:text="${peminjaman.tanggal_pengembalian}">Tanggal
                                                 Pengembalian</td>
                                             <td th:text="${peminjaman.id_surat}">Peminjaman Id Surat</td>
-                                            <td><a onclick="return confirm('Are you sure?')" th:href="'/literature/hapus/' + ${literature.id}">Delete Data</a> || <a th:href="'/literatur/view/' + ${peminjaman.id}">Detail Data</a></td>
+                                            <td><a th:href="'/peminjaman/ubah/' + ${peminjaman.id}">Edit
+                                                    Data</a></td>
                                     </tr>
 
                                         </tbody>

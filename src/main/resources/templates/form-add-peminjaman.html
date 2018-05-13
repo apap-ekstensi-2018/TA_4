@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/css/material-dashboard.css?v=2.0.0" />
     <!-- Documentation extras -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap-material-datetimepicker.css" />
+    <link rel="stylesheet" type="text/css" href="/DataTable/datatables.min.css" />
     
 </head>
 
@@ -73,7 +74,7 @@
                                     <p class="card-category">Lengkapi form isian peminjaman</p>
                                 </div>
                                 <div class="card-body">
-                                	<form method="post" action="/peminjaman/add/submit">
+                                	<form method="post" action="/peminjaman/tambah/submit">
 										 
 										<div class="divider col s12 l6"></div>
 										<br/>
@@ -82,8 +83,11 @@
 										 	<div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Judul Literatur</label>
-                                                    <input type="text" class="form-control" name="judul" id="judul" />
+                                                    <input type="text" class="form-control" name="judul" id="judul" readonly="readonly" />
                                                     <input type="hidden" name="id_literatur" id="id_literatur" />
+                                                    <button type="button" class="btn btn-info" id="searchLiteraturBtn">
+												      <span class="glyphicon glyphicon-search"></span> Search
+												    </button>
                                                 </div>
                                             </div>
 										</div>
@@ -107,19 +111,11 @@
 										 	<div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Surat Referensi</label> 
-                                                    <input type="text" class="form-control" name="penerbit" id="penerbit" />
+                                                    <input type="number" class="form-control" name="id_surat" id="id_surat" />
                                                 </div>
                                             </div>
 										</div>
-										<div class="row">
-										 	<div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label class="bmd-label-floating">Jumlah</label>
-                                                    <input type="number" class="form-control" name="jumlah" id="jumlah" />
-                                                </div>
-                                            </div>
-										</div>
-										 
+										
 											<button class="btn blue" type="submit" name="action" value="submit">
 												Submit
 											</button>
@@ -134,7 +130,54 @@
                 
                 
                 	<div class="row">
-			
+			<div id="modalSearchLiteratur" class="modal fade" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                            <h4 class="modal-title">Cari Literatur</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="scroller" style="height:300px" data-always-visible="1" data-rail-visible1="1">
+                                <div class="form-body">
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <table class="table table-hover" id="tblLiteratur">
+                                        <thead class="text-warning">
+                                        	<th>No.</th>
+							        		<th>Judul</th>
+							        		 
+							        		<th>Jenis Literatur</th>
+							        		<th>Jumlah Available</th>
+							        		<th>Action</th>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="literature,iterationStatus: ${literatures}">
+	            <td th:text="${iterationStatus.count}">No. 1</td>
+		       	 
+		       	<td th:text="${literature.judul}"><a th:href="'/literature/view/' + ${literature.id}">Literature Judul</a></td>
+		        	<td th:text="${literature.jenis_literatur}">Literature Jenis</td>
+		       	<td th:text="${literature.jumlah}">Literature Jumlah</td>
+			    <td><a  th:onclick="'selectLiteratur(\'' + ${literature.id} + '\',\''+${literature.judul}+'\');'">Pilih Literatur</a></td>
+		       
+	       	</tr> 
+                                        </tbody>
+                                    </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn dark btn-outline">Cancel</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
 		</div>
                 </div>
             </div>
@@ -157,7 +200,9 @@
 <script src="/js/moment.js"></script>
 <script src="/js/bootstrap-material-datetimepicker.js"></script>
  
+  <script type="text/javascript" src="/DataTable/datatables.min.js"></script>
 <script type="text/javascript">
+var oTable1=null;
     $(document).ready(function() {
 
         //init wizard
@@ -170,8 +215,25 @@
   //      demo.initCharts();
     	$('#tanggal_peminjaman').bootstrapMaterialDatePicker({ weekStart : 0, time: false });
     	$('#tanggal_pengembalian').bootstrapMaterialDatePicker({ weekStart : 0, time: false });
-    	
+    	$('#searchLiteraturBtn').on('click', function(){
+    		$('#modalSearchLiteratur').modal('show');
+    		if (oTable1 != undefined) {
+    	        oTable1.destroy();
+    	    };
+    	    oTable1 = $('#tblLiteratur').DataTable({
+    			"ordering": false
+    		});
+    	});
+  
     });
+    function selectLiteratur(idliteratur, judulliteratur) {
+
+		$('#id_literatur').val(idliteratur);
+		$('#judul').val(judulliteratur);
+		
+        $('#modalSearchLiteratur').modal('toggle');
+        
+    }
 </script>
 	
 </html>
