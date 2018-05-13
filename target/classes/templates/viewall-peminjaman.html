@@ -86,7 +86,21 @@
 							        		<th>Action</th>
                                         </thead>
                                         <tbody>
-                                         
+                                         <tr th:each="peminjaman,iterationStatus: ${peminjaman}">
+                                            <td th:text="${iterationStatus.count}">No. 1</td>
+
+                                            <td th:text="${peminjaman.id_literatur}"></td>
+                                            <td th:text="${peminjaman.username_peminjam}">Username
+                                                Peminjam</td>
+                                            <td th:text="${peminjaman.tanggal_pemijaman}">Tanggal
+                                                Peminjaman</td>
+                                            <td th:text="${peminjaman.tanggal_pengembalian}">Tanggal
+                                                Pengembalian</td>
+                                            <td th:text="${peminjaman.id_surat}">Peminjaman Id Surat</td>
+                                            <td><a th:href="'/peminjaman/ubah/' + ${peminjaman.id}">Edit
+                                                    Data</a></td>
+                                    </tr>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -138,3 +152,4 @@
 </script>
 	
 </html>
+

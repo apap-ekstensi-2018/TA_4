@@ -56,11 +56,11 @@ public class PeminjamanRestController {
 			boolean checkOverdueByUserAccount = peminjamanService.isPeminjamanOverdue(user_account);
 			if(checkOverdueByUserAccount) {
 				// return name, and npm/user account
-				userReturn.setOverdue("true");
+				userReturn.setOverdue(true);
 				return userReturn;
 			}
 			else {
-				userReturn.setOverdue("false");
+				userReturn.setOverdue(false);
 				return userReturn;
 			}
 		}

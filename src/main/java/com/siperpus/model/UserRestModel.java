@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class UserRestModel {
 	private String username;
 	private String name;
-	private String overdue;
+	private boolean overdue;
 	private String statusRestHttp;
 	private String msg;
 }
