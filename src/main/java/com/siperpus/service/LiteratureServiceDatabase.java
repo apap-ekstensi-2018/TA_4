@@ -6,8 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.siperpus.model.LiteratureModel;
+import com.siperpus.model.PengadaanLiteraturModel;
 import com.siperpus.service.LiteratureServiceDatabase;
 import com.siperpus.dao.LiteraturMapper;
+import com.siperpus.dao.PengadaanLiteraturMapper;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,6 +20,9 @@ public class LiteratureServiceDatabase implements LiteratureService {
 	 
 	 @Autowired
 	    private LiteraturMapper literaturMapper;
+	 
+	 @Autowired
+	 private PengadaanLiteraturMapper pengadaanMapper;
 	 
 	 @Override
 	    public List<LiteratureModel> selectAllLiteratures()
@@ -67,4 +72,9 @@ public class LiteratureServiceDatabase implements LiteratureService {
 		return literaturMapper.selectAllLiteraturesBySearch(literature);
 	}
 
+	@Override
+	public void addPengadaanLiterature (PengadaanLiteraturModel pengadaanLiteratur) {
+		pengadaanMapper.addLiterature(pengadaanLiteratur);
+		
+	}
 }

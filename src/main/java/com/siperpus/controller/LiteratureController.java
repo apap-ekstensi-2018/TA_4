@@ -1,9 +1,15 @@
 package com.siperpus.controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,11 +18,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.siperpus.service.LiteratureService;
 import com.siperpus.service.PeminjamanService;
 import com.siperpus.model.LiteratureModel;
 import com.siperpus.model.PeminjamanModel;
+import com.siperpus.model.PengadaanLiteraturModel;
 
 
 @Controller
@@ -167,5 +175,62 @@ public class LiteratureController {
 	        
 
 	        return "viewall"; 
+	    }
+	  
+	  @RequestMapping("/literatur/upload")
+	    public String upload()
+	    {
+	        return "form-upload";
+	    }
+	  
+	//Save the uploaded file to this folder
+	    private static String UPLOADED_FOLDER = "\\META-INF.resources\\upload\\"; //"F://temp//";
+	    
+	  @RequestMapping(value = "/literatur/upload/submit", method = RequestMethod.POST)
+	    public String uploadSubmit (Model model,
+	            @RequestParam(value = "judul", required = false) String judul,
+	            @RequestParam(value = "penulis", required = false) String penulis,
+	            @RequestParam(value = "penerbit", required = false) String penerbit,
+	            @RequestParam("file") MultipartFile file)
+	    {
+		  	if (file.isEmpty()) {
+	            //redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
+	            return "failed-upload";
+	        }
+		  	
+		  	 try {
+
+		            // Get the file and save it somewhere
+		            byte[] bytes = file.getBytes();
+		            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+		            System.out.println(path);
+		            Files.write(path, bytes);
+
+		            PengadaanLiteraturModel literature = new PengadaanLiteraturModel ();
+			        literature.setJudul(judul);
+			        literature.setPenulis(penulis);
+			        literature.setPenerbit(penerbit);
+			        literature.setFilename(file.getOriginalFilename());
+			        literature.setStatus("Request");
+			        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+			        String userName = auth.getName();
+			        literature.setUsername_requester(userName);
+			        
+			        literatureDAO.addPengadaanLiterature(literature);
+			        
+		            return "success-upload"; 
+
+		        } catch (IOException e) {
+		            e.printStackTrace();
+		        }
+
+	       
+	        
+	         
+	        
+	        
+
+	        return "success-upload"; 
 	    }
 }

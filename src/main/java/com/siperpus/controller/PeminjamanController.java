@@ -57,7 +57,7 @@ public class PeminjamanController {
 	        
 	        // if staff, show all
 	        if (userModel != null) {
-	        	if (userModel.getRole()=="ROLE_STAF") {
+	        	if (userModel.getRole().equals("ROLE_STAF")) {
 	        		// show all
 	        		List<PeminjamanModel> peminjaman = peminjamanDAO.selectAllPeminjaman();
 	       	        model.addAttribute ("peminjaman", peminjaman);
