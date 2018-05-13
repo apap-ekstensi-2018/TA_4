@@ -14,25 +14,7 @@
     <link rel="stylesheet" type="text/css" href="/css/font-css.css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
     <link rel="stylesheet" href="/css/material-dashboard.css?v=2.0.0" />
-    <!-- Documentation extras -->
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap-material-datetimepicker.css" />
-    <link rel="stylesheet" type="text/css" href="/DataTable/datatables.min.css" />
-    <style>
-   .dtp {
-position: fixed;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background: rgba(0, 0, 0, .4);
-z-index: 2000;
-font-size: 15px;
--webkit-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
-user-select: none;
-}
-    </style>
+    <!-- Documentation extras --> 
 </head>
 
 <body class="">
@@ -63,13 +45,13 @@ user-select: none;
                             <p>List Literature</p>
                         </a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="/literature/viewall">
                             <i class="material-icons">content_paste</i>
                             <p>List Peminjaman</p>
                         </a>
                     </li>
-                     <li class="nav-item ">
+                     <li class="nav-item active">
                         <a class="nav-link" href="/literatur/cari">
                             <i class="material-icons">search</i>
                             <p>Pencarian Literatur</p>
@@ -90,62 +72,61 @@ user-select: none;
                         <div class="col-md-8">
                             <div class="card">
                                 <div class="card-header card-header-primary">
-                                    <h4 class="card-title">Create Peminjaman Baru</h4>
-                                    <p class="card-category">Lengkapi form isian peminjaman</p>
+                                    <h4 class="card-title">Pencarian Literatur</h4>
+                                    <p class="card-category">Lengkapi form isian pencarian</p>
                                 </div>
                                 <div class="card-body">
-                                	<form method="post" action="/peminjaman/tambah/submit">
+                                	<form method="post" action="/literatur/cari/submit">
 										 
 										<div class="divider col s12 l6"></div>
 										<br/>
 										 
 										<div class="row">
 										 	<div class="col-md-12">
-										 		<div class="input-group no-border">
-										 			 
-	                                                    	<input type="text" class="form-control" name="judul" id="judul" readonly="readonly"  placeholder="Judul"/>
-	                                                    	<input type="hidden" name="id_literatur" id="id_literatur" />
-					                                 
-					                                <button type="button" id="searchLiteraturBtn" class="btn btn-blue btn-round btn-just-icon">
-						                                    <i class="material-icons">search</i> 
-						                                    <div class="ripple-container"></div>
-						                                </button> 
-					                            </div>
-                                               
-	                                               
-                                            </div>
-										</div>
-										<div class="row">
-										 	<div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="bmd-label-floating">Tanggal Peminjaman</label>
-                                                    <input type="text" class="form-control" name="tanggal_peminjaman" id="tanggal_peminjaman" />
+                                                    <label class="bmd-label-floating">Judul Buku</label>
+                                                    <input type="text" class="form-control" name="judul" id="judul" />
                                                 </div>
                                             </div>
 										</div>
 										<div class="row">
 										 	<div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="bmd-label-floating">Tanggal Pengembalian</label>
-                                                    <input type="text" class="form-control" name="tanggal_pengembalian" id="tanggal_pengembalian" />
+                                                    <label class="bmd-label-floating">Nama Penulis</label>
+                                                    <input type="text" class="form-control" name="penulis" id="penulis" />
                                                 </div>
                                             </div>
 										</div>
 										<div class="row">
 										 	<div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="bmd-label-floating">Surat Referensi</label> 
-                                                    <input type="number" class="form-control" name="id_surat" id="id_surat" />
+                                                    <label class="bmd-label-floating">Nama Penerbit</label> 
+                                                    <input type="text" class="form-control" name="penerbit" id="penerbit" />
                                                 </div>
                                             </div>
 										</div>
-										
+										<div class="row">
+										 	<div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Jenis Literature</label>
+                                                    <select name="jenis_literatur" id="jenis_literatur" class="form-control">
+                                                    	<option value="">-- ALL --</option>
+                                                    	<option value="jurnal">Jurnal</option>
+                                                    	<option value="buku">Buku</option>
+                                                    	<option value="referensi">Referensi</option>
+                                                    	<option value="publikasi">Publikasi</option>
+                                                    	<option value="Tugas Akhir">Tugas Akhir</option>
+                                                    	<option value="Skripsi">Skripsi</option>
+                                                    	<option value="Tesis">Tesis</option>
+                                                    	<option value="Disertasi">Disertasi</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+										</div>
 											<button class="btn blue" type="submit" name="action" value="submit">
-												Submit
+												Cari
 											</button>
-											<a class="btn red">
-												Back
-											</a>
+											 
 									</form>
                                 </div>
                                 </div>
@@ -219,47 +200,9 @@ user-select: none;
 <!-- Library for adding dinamically elements -->
 <script src="/js/plugins/arrive.min.js" type="text/javascript"></script>
 <!--  Notifications Plugin, full documentation here: http://bootstrap-notify.remabledesigns.com/    -->
-<script src="/js/plugins/bootstrap-notify.js"></script>
- 
-<script src="/js/moment.js"></script>
-<script src="/js/bootstrap-material-datetimepicker.js"></script>
- 
-  <script type="text/javascript" src="/DataTable/datatables.min.js"></script>
+<script src="/js/plugins/bootstrap-notify.js"></script> 
 <script type="text/javascript">
-var oTable1=null;
-    $(document).ready(function() {
-
-        //init wizard
-
-        // demo.initMaterialWizard();
-
-        // Javascript method's body can be found in assets/js/demos.js
-//        demo.initDashboardPageCharts();
-
-  //      demo.initCharts();
-    	
-    	$('#searchLiteraturBtn').on('click', function(){
-    		$('#modalSearchLiteratur').modal('show');
-    		if (oTable1 != undefined) {
-    	        oTable1.destroy();
-    	    };
-    	    oTable1 = $('#tblLiteratur').DataTable({
-    			"ordering": false
-    		});
-    	});
-    	
-    	$('#tanggal_peminjaman').bootstrapMaterialDatePicker({ weekStart : 0, time: false });
-    	$('#tanggal_pengembalian').bootstrapMaterialDatePicker({ weekStart : 0, time: false });
-  
-    });
-    function selectLiteratur(idliteratur, judulliteratur) {
-
-		$('#id_literatur').val(idliteratur);
-		$('#judul').val(judulliteratur);
-		
-        $('#modalSearchLiteratur').modal('toggle');
-        
-    }
+ 
 </script>
 	
 </html>

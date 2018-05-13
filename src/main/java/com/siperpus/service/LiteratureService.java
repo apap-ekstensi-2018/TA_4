@@ -15,5 +15,6 @@ public interface LiteratureService {
 	 void updateLiterature  (LiteratureModel literature);
 	 
 	 void deleteLiterature (Integer id);
-	 
+	 List<LiteratureModel> selectAllLiteraturesBySearchJenis(LiteratureModel literature);
+	 List<LiteratureModel> selectAllLiteraturesBySearch(LiteratureModel literature);
 }

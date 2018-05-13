@@ -27,6 +27,13 @@ public interface LiteraturMapper {
 	@Select("SELECT * FROM literatur")
 	List<LiteratureModel> selectAllLiteratures();
 	
+	@Select("SELECT * FROM literatur where judul like #{judul} or penulis like #{penulis} or penerbit like #{penerbit} and jenis_literatur=#{jenis_literatur}")
+	List<LiteratureModel> selectAllLiteraturesBySearchJenis(LiteratureModel literature);
+	
+
+	@Select("SELECT * FROM literatur where judul like #{judul} or penulis like #{penulis} or penerbit like #{penerbit}")
+	List<LiteratureModel> selectAllLiteraturesBySearch(LiteratureModel literature);
+	
 	@Select ("SELECT * FROM literatur WHERE id = #{id}")
 	@Results (value= {
 	@Result(property="id", column="id"),

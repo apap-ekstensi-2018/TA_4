@@ -56,5 +56,15 @@ public class LiteratureServiceDatabase implements LiteratureService {
 		literaturMapper.deleteLiterature(id);
 		
 	}
+	
+	@Override
+	public List<LiteratureModel> selectAllLiteraturesBySearchJenis(LiteratureModel literature){
+		return literaturMapper.selectAllLiteraturesBySearchJenis(literature);
+	}
+	
+	@Override
+	public List<LiteratureModel> selectAllLiteraturesBySearch(LiteratureModel literature){
+		return literaturMapper.selectAllLiteraturesBySearch(literature);
+	}
 
 }

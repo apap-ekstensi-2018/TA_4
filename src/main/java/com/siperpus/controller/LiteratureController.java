@@ -135,7 +135,37 @@ public class LiteratureController {
 	  }
 
 	  
-	  
+	  @RequestMapping("/literatur/cari")
+	    public String cari ()
+	    {
+	        return "form-cari-literatur";
+	    }
  
-	 
+	  @RequestMapping(value = "/literatur/cari/submit", method = RequestMethod.POST)
+	    public String cariSubmit (Model model,
+	            @RequestParam(value = "judul", required = false) String judul,
+	            @RequestParam(value = "penulis", required = false) String penulis,
+	            @RequestParam(value = "penerbit", required = false) String penerbit,
+	            @RequestParam(value = "jenis_literatur", required = false) String jenis_literatur)
+	    {
+	        LiteratureModel literature = new LiteratureModel ();
+	        literature.setJudul("%"+judul+"%");
+	        literature.setPenulis("%"+penulis+"%");
+	        literature.setPenerbit("%"+penerbit+"%");
+	        literature.setJenis_literatur(jenis_literatur);
+	         
+	        if (jenis_literatur.isEmpty()) {
+	        	List<LiteratureModel> literatureList = literatureDAO.selectAllLiteraturesBySearch(literature);
+		        model.addAttribute ("literatures", literatureList);
+	        }
+	        else {
+	        	List<LiteratureModel> literatureList = literatureDAO.selectAllLiteraturesBySearchJenis(literature);
+		        model.addAttribute ("literatures", literatureList);
+	        }
+	        //literatureDAO.addLiterature (literature);
+
+	        
+
+	        return "viewall"; 
+	    }
 }
