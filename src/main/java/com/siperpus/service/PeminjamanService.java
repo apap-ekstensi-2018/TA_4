@@ -14,4 +14,5 @@ public interface PeminjamanService {
 	 void deletePeminjaman (Integer id);  
 	 void updateStatusPeminjaman (PeminjamanModel peminjaman);
 	 
+	 boolean isPeminjamanOverdue(String user_account);
 }

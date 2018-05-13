@@ -65,5 +65,17 @@ public class PeminjamanServiceDatabase implements PeminjamanService {
 		 peminjamanMapper.updateStatusPeminjaman(peminjaman);
 	 }
 
+	@Override	
+	public   boolean isPeminjamanOverdue(String user_account) {
+		List<PeminjamanModel> listPeminjamanOverdue = peminjamanMapper.selectPeminjamanByUserAccountAndStatus(user_account, "Overdue");
+		
+		if (listPeminjamanOverdue.size() > 0)
+		{
+			return true;
+		}
+		else {
+			return false;
+		} 
+	}
 	
 }
