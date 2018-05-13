@@ -8,7 +8,7 @@ public interface PeminjamanService {
 	 List<PeminjamanModel> selectAllPeminjaman();
 	 
 	 void addPeminjaman (PeminjamanModel peminjaman);
-	PeminjamanModel selectPeminjaman (Integer id); 
+	PeminjamanModel selectPeminjaman (Integer id_literatur); 
 	 void updatePeminjaman  (PeminjamanModel peminjaman);
 	  
 	 void deletePeminjaman (Integer id);  

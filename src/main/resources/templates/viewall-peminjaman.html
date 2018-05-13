@@ -89,7 +89,10 @@
                                          <tr th:each="peminjaman,iterationStatus: ${peminjaman}">
                                             <td th:text="${iterationStatus.count}">No. 1</td>
 
-                                            <td th:text="${peminjaman.id_literatur}"></td>
+                                            <td><a th:href="'/peminjaman/view/' + ${peminjaman.id_literatur}" >
+													<div th:text="${peminjaman.id_literatur}"></div>
+												</a>
+											</td>
                                             <td th:text="${peminjaman.username_peminjam}">Username
                                                 Peminjam</td>
                                             <td th:text="${peminjaman.tanggal_pemijaman}">Tanggal

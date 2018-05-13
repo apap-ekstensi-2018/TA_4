@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: siperpus-ta4
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: Yogine
+Built-By: root
 Implementation-Vendor-Id: com.siperpus
-Build-Jdk: 1.8.0_151
+Build-Jdk: 1.8.0_144
 Implementation-URL: http://projects.spring.io/spring-boot/ta-4/
 Created-By: Maven Integration for Eclipse
 Implementation-Vendor: Pivotal Software, Inc.

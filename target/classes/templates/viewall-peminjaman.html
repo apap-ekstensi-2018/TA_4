@@ -89,7 +89,10 @@
                                          <tr th:each="peminjaman,iterationStatus: ${peminjaman}">
                                             <td th:text="${iterationStatus.count}">No. 1</td>
 
-                                            <td th:text="${peminjaman.id_literatur}"></td>
+                                            <td><a th:href="'/peminjaman/view/' + ${peminjaman.id_literatur}" >
+													<div th:text="${peminjaman.id_literatur}"></div>
+												</a>
+											</td>
                                             <td th:text="${peminjaman.username_peminjam}">Username
                                                 Peminjam</td>
                                             <td th:text="${peminjaman.tanggal_pemijaman}">Tanggal
@@ -97,8 +100,7 @@
                                             <td th:text="${peminjaman.tanggal_pengembalian}">Tanggal
                                                 Pengembalian</td>
                                             <td th:text="${peminjaman.id_surat}">Peminjaman Id Surat</td>
-                                            <td><a th:href="'/peminjaman/ubah/' + ${peminjaman.id}">Edit
-                                                    Data</a></td>
+                                            <td><a onclick="return confirm('Are you sure?')" th:href="'/literature/hapus/' + ${literature.id}">Delete Data</a> || <a th:href="'/literatur/view/' + ${peminjaman.id}">Detail Data</a></td>
                                     </tr>
 
                                         </tbody>

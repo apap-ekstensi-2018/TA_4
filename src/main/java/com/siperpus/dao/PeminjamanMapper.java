@@ -26,8 +26,8 @@ public interface PeminjamanMapper {
 
 //@Select ("SELECT * FROM peminjaman_literatur WHERE id = #{id}")
 
-@Select("select id, id_literatur, username_peminjam, tanggal_peminjaman, tanggal_pengembalian, id_surat, status_peminjaman from peminjaman_literatur where id = #{id}")
-	PeminjamanModel selectPeminjaman (@Param("id") Integer id);  
+@Select("select id, id_literatur, username_peminjam, tanggal_peminjaman, tanggal_pengembalian, id_surat, status_peminjaman from peminjaman_literatur where id_literatur = #{id_literatur}")
+	PeminjamanModel selectPeminjaman (@Param("id_literatur") int id_literatur);  
 
 @Select("select id, id_literatur, username_peminjam, tanggal_peminjaman, tanggal_pengembalian, id_surat, status_peminjaman from peminjaman_literatur "
 		+ " where status_peminjaman=#{status} and username_peminjam = #{npm}")

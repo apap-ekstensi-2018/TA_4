@@ -85,31 +85,31 @@ public class PeminjamanController {
 
 	  	@RequestMapping("/peminjaman/view")
 	    public String view (Model model,
-	            @RequestParam(value = "id", required = false) Integer id)
+	            @RequestParam(value = "id_literatur", required = false) int id_literatur)
 	    {
-	        PeminjamanModel peminjaman = peminjamanDAO.selectPeminjaman(id);
+	        PeminjamanModel peminjaman = peminjamanDAO.selectPeminjaman(id_literatur);
 
 	        if (peminjaman != null) {
 	            model.addAttribute ("peminjaman",peminjaman);
 	            return "view";
 	        } else {
-	            model.addAttribute ("id",id);
+	            model.addAttribute ("id_literatur",id_literatur);
 	            return "not-found";
 	        }
 	    }
 
 
-	    @RequestMapping("/peminjaman/view/{id}")
+	    @RequestMapping("/peminjaman/view/{id_literatur}")
 	    public String viewPath (Model model,
-	            @PathVariable(value = "id") Integer id)
+	            @PathVariable(value = "id_literatur") int id_literatur)
 	    {
-	        PeminjamanModel peminjaman = peminjamanDAO.selectPeminjaman(id);
+	        PeminjamanModel peminjaman = peminjamanDAO.selectPeminjaman(id_literatur);
 
 	        if (peminjaman != null) {
 	            model.addAttribute ("peminjaman", peminjaman);
 	            return "view";
 	        } else {
-	            model.addAttribute ("id", id);
+	            model.addAttribute ("id_literatur", id_literatur);
 	            return "not-found";
 	        }
 	   

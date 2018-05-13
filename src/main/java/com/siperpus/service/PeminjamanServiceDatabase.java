@@ -21,10 +21,10 @@ public class PeminjamanServiceDatabase implements PeminjamanService {
 	
 
 	@Override
-	 public PeminjamanModel selectPeminjaman (Integer id)
+	 public PeminjamanModel selectPeminjaman (Integer id_literatur)
 	 {
-	       log.info ("select peminjaman with id: " + id);
-	      return  peminjamanMapper.selectPeminjaman(id);
+	       log.info ("select peminjaman with id_literatur: " + id_literatur);
+	      return  peminjamanMapper.selectPeminjaman(id_literatur);
 	 }  
 	 @Override
 	    public List<PeminjamanModel> selectAllPeminjaman()
