@@ -12,7 +12,9 @@ import org.apache.ibatis.annotations.Update;
 import com.siperpus.model.PeminjamanModel;
 @Mapper
 public interface PeminjamanMapper {
-	@Insert ("INSERT INTO peminjaman_literatur (judul, penulis, penerbit,jenis_literatur, jumlah) VALUES (#{judul}, #{penulis}, #{penerbit}, #{jenis_literatur}, #{jumlah})")
+	@Insert ("INSERT INTO peminjaman_literatur (id_literatur, username_peminjam, tanggal_peminjaman, tanggal_pengembalian, "
+			+ " status_peminjaman, id_surat) VALUES (#{id_literatur}, #{username_peminjam}, #{tanggal_peminjaman}, #{tanggal_pengembalian}, "
+			+ " #{status_peminjaman}, #{id_surat})")
  	void addPeminjaman (PeminjamanModel peminjaman);
  
  @Update("UPDATE peminjaman_literatur SET   judul=#{judul}, penulis=#{penulis}, penerbit=#{penerbit}, jenis_literatur=#{jenis_literatur}, jumlah=#{jumlah} WHERE id=#{id}")

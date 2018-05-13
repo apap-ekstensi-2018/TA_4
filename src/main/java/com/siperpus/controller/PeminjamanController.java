@@ -2,6 +2,8 @@ package com.siperpus.controller;
  
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,7 +37,9 @@ public class PeminjamanController {
 	@Autowired
 	PeminjamanService peminjamanDAO;
 	  
-	  
+	@Autowired
+    LiteratureService literatureDAO;
+	
 	  @RequestMapping("/peminjaman/viewall")
 	    public String view (Model model)
 	    {
@@ -46,22 +50,36 @@ public class PeminjamanController {
 	    }
 	  
 	  @RequestMapping("/peminjaman/tambah")
-	    public String add ()
+	    public String add (Model model)
 	    {
+		  List<LiteratureModel> literature = literatureDAO.selectAllLiteratures ();
+	        model.addAttribute ("literatures", literature);
 	        return "form-add-peminjaman";
 	    }
 	  
-	  @RequestMapping(value = "/peminjaman/add/submit", method = RequestMethod.POST)
+	  @RequestMapping(value = "/peminjaman/tambah/submit", method = RequestMethod.POST)
 	    public String addSubmit (Model model,
-	            @RequestParam(value = "id_literatur", required = false) int id_literatur,
-	            @RequestParam(value = "username_peminjam", required = false) String penulis,
-	            @RequestParam(value = "penerbit", required = false) String penerbit,
-	            @RequestParam(value = "jenis_literatur", required = false) String jenis_literatur,
-	            @RequestParam(value = "jumlah", required = false) String jumlah)
+	            @RequestParam(value = "id_literatur", required = true) int id_literatur,
+	            @RequestParam(value = "tanggal_peminjaman", required = true) String tanggal_peminjaman,
+	            @RequestParam(value = "tanggal_pengembalian", required = true) String tanggal_pengembalian,
+	            @RequestParam(value = "id_surat", required = false) int id_surat)
 	    {
+	        PeminjamanModel modelNew = new PeminjamanModel();
+	        modelNew.setId_literatur(id_literatur);
+	        modelNew.setTanggal_peminjaman(tanggal_peminjaman);
+	        modelNew.setTanggal_pengembalian(tanggal_pengembalian);
+	        modelNew.setStatus_peminjaman("Belum Diproses");
+	        modelNew.setId_surat(id_surat);
 	        
+	        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-	        return "viewall"; 
+	        String userName = auth.getName();
+	        modelNew.setUsername_peminjam(userName);
+	         System.out.println("Model peminjaman" + modelNew);
+	         
+	        peminjamanDAO.addPeminjaman(modelNew);
+	        
+	        return "success-add-peminjaman"; 
 	    }
 	  
 	  @RequestMapping("/peminjaman/ubah/{id_literatur}")
