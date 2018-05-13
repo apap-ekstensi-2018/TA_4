@@ -70,32 +70,23 @@
                 	
                 		<div class="card">
                                 <div class="card-header card-header-warning">
-                                    <h4 class="card-title">List Literatur</h4>
-                                    <p class="card-category">View All Literatur</p>
+                                    <h4 class="card-title">List Peminjaman</h4>
+                                    <p class="card-category">View All Peminjaman</p>
                                 </div>
                                 <div class="card-body table-responsive">
                                     <table class="table table-hover">
                                         <thead class="text-warning">
                                         	<th>No.</th>
-							        		<th>Judul</th>
-							        		<th>Penulis</th>
-							        		<th>Penerbit</th>
-							        		<th>Jenis Literatur</th>
-							        		<th>Jumlah Literatur</th>
+                                        	<th>Surat Referensi</th>
+							        		<th>Judul Literatur</th>
+							        		<th>NPM Peminjamn</th>
+							        		<th>Tanggal Peminjaman</th>
+							        		<th>Tanggal Pengembalian</th>
+							        		<th>Status Peminjaman</th>
 							        		<th>Action</th>
                                         </thead>
                                         <tbody>
-                                        <tr th:each="literature,iterationStatus: ${literatures}">
-	            <td th:text="${iterationStatus.count}">No. 1</td>
-		       	 
-		       	<td th:text="${literature.judul}">Literature Judul</td>
-		       	<td th:text="${literature.penulis}">Literature Penulis</td>
-		       	<td th:text="${literature.penerbit}">Literature Penerbit</td>
-		       	<td th:text="${literature.jenis_literatur}">Literature Jenis</td>
-		       	<td th:text="${literature.jumlah}">Literature Jumlah</td>
-			    <td><a onclick="return confirm('Are you sure?')" th:href="'/literature/hapus/' + ${literature.id}">Delete Data</a> || <a th:href="'/literatur/ubah/' + ${literature.id}">Edit Data</a></td>
-		       
-	       	</tr> 
+                                         
                                         </tbody>
                                     </table>
                                 </div>
@@ -103,8 +94,8 @@
                 		  
                 	</div> 
                 	<div class="row">
-                	 <a class="btn btn-warning" href="/literature/add">
-                            Add New Literatur
+                	 <a class="btn btn-warning" href="/peminjaman/tambah">
+                            Ajukan Peminjaman Baru
                         </a>
                 	</div>
                 </div>
