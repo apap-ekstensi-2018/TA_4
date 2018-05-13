@@ -22,7 +22,7 @@
 
 <body class="">
     <div class="wrapper">
-        <div class="sidebar" data-color="purple" data-background-color="white" >
+        <div class="sidebar" data-color="azure" data-background-color="white" >
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -89,7 +89,7 @@
                                         <tr th:each="literature,iterationStatus: ${literatures}">
 	            <td th:text="${iterationStatus.count}">No. 1</td>
 		       	 
-		       	<td th:text="${literature.judul}"><a th:href="'/literature/view/' + ${literature.id}">Literature Judul</a></td>
+		       	<td ><a th:href="'/literatur/view/' + ${literature.id}" th:text="${literature.judul}">judul</a></td>
 		       	<td th:text="${literature.penulis}">Literature Penulis</td>
 		       	<td th:text="${literature.penerbit}">Literature Penerbit</td>
 		       	<td th:text="${literature.jenis_literatur}">Literature Jenis</td>

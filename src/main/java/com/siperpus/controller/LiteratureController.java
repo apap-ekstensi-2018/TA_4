@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.siperpus.service.LiteratureService;
+import com.siperpus.service.PeminjamanService;
 import com.siperpus.model.LiteratureModel;
+import com.siperpus.model.PeminjamanModel;
 
 
 @Controller
@@ -24,6 +26,8 @@ public class LiteratureController {
 	@Autowired
     LiteratureService literatureDAO;
 	
+	@Autowired
+	PeminjamanService peminjamanDAO;
 	  
 	  
 	  @RequestMapping("/literature/viewall")
@@ -116,8 +120,13 @@ public class LiteratureController {
 				model.addAttribute("id",id.get());
 				return "not-found";	
 			}else {
-				model.addAttribute("id", id.get());
-				return "view";
+				List<PeminjamanModel> listPeminjaman = peminjamanDAO.selectPeminjamanByIdLiteratur(literature.getId());
+	        	
+	        	int totalAvailable = Integer.parseInt(literature.getJumlah()) - listPeminjaman.size();
+	        	String jmlString = Integer.toString(totalAvailable);
+	        	literature.setJumlah(jmlString);
+				model.addAttribute ("literature", literature);
+				return "view-literatur";
 			}
 		  }else {
 			  model.addAttribute("id","");

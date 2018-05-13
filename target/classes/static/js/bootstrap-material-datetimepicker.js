@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 (function ($, moment)
 {
    var pluginName = "bootstrapMaterialDatePicker";

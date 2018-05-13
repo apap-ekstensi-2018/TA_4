@@ -17,7 +17,22 @@
     <!-- Documentation extras -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap-material-datetimepicker.css" />
     <link rel="stylesheet" type="text/css" href="/DataTable/datatables.min.css" />
-    
+    <style>
+   .dtp {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: rgba(0, 0, 0, .4);
+z-index: 2000;
+font-size: 15px;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+    </style>
 </head>
 
 <body class="">
@@ -81,14 +96,18 @@
 										 
 										<div class="row">
 										 	<div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label class="bmd-label-floating">Judul Literatur</label>
-                                                    <input type="text" class="form-control" name="judul" id="judul" readonly="readonly" />
-                                                    <input type="hidden" name="id_literatur" id="id_literatur" />
-                                                    <button type="button" class="btn btn-info" id="searchLiteraturBtn">
-												      <span class="glyphicon glyphicon-search"></span> Search
-												    </button>
-                                                </div>
+										 		<div class="input-group no-border">
+										 			 
+	                                                    	<input type="text" class="form-control" name="judul" id="judul" readonly="readonly"  placeholder="Judul"/>
+	                                                    	<input type="hidden" name="id_literatur" id="id_literatur" />
+					                                 
+					                                <button type="button" id="searchLiteraturBtn" class="btn btn-blue btn-round btn-just-icon">
+						                                    <i class="material-icons">search</i> 
+						                                    <div class="ripple-container"></div>
+						                                </button> 
+					                            </div>
+                                               
+	                                               
                                             </div>
 										</div>
 										<div class="row">
@@ -138,7 +157,7 @@
                             <h4 class="modal-title">Cari Literatur</h4>
                         </div>
                         <div class="modal-body">
-                            <div class="scroller" style="height:300px" data-always-visible="1" data-rail-visible1="1">
+                            <div class="scroller"  data-always-visible="1" data-rail-visible1="1">
                                 <div class="form-body">
 
                                     <div class="row">
@@ -213,8 +232,7 @@ var oTable1=null;
 //        demo.initDashboardPageCharts();
 
   //      demo.initCharts();
-    	$('#tanggal_peminjaman').bootstrapMaterialDatePicker({ weekStart : 0, time: false });
-    	$('#tanggal_pengembalian').bootstrapMaterialDatePicker({ weekStart : 0, time: false });
+    	
     	$('#searchLiteraturBtn').on('click', function(){
     		$('#modalSearchLiteratur').modal('show');
     		if (oTable1 != undefined) {
@@ -224,6 +242,9 @@ var oTable1=null;
     			"ordering": false
     		});
     	});
+    	
+    	$('#tanggal_peminjaman').bootstrapMaterialDatePicker({ weekStart : 0, time: false });
+    	$('#tanggal_pengembalian').bootstrapMaterialDatePicker({ weekStart : 0, time: false });
   
     });
     function selectLiteratur(idliteratur, judulliteratur) {

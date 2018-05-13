@@ -69,45 +69,69 @@
                 <div class="container-fluid">
                 	<div class="row">
                 	
-                		<div class="card">
-                                <div class="card-header card-header-warning">
-                                    <h4 class="card-title">List Literatur</h4>
-                                    <p class="card-category">View All Literatur</p>
-                                </div>
-                                <div class="card-body table-responsive">
-                                    <table class="table table-hover">
-                                        <thead class="text-warning">
-                                        	<th>No.</th>
-							        		<th>Judul</th>
-							        		<th>Penulis</th>
-							        		<th>Penerbit</th>
-							        		<th>Jenis Literatur</th>
-							        		<th>Jumlah Literatur</th>
-							        		<th>Action</th>
-                                        </thead>
-                                        <tbody>
-                                        <tr th:each="literature,iterationStatus: ${literatures}">
-	            <td th:text="${iterationStatus.count}">No. 1</td>
-		       	 
-		       	<td ><a th:href="'/literatur/view/' + ${literature.id}" th:text="${literature.judul}">judul</a></td>
-		       	<td th:text="${literature.penulis}">Literature Penulis</td>
-		       	<td th:text="${literature.penerbit}">Literature Penerbit</td>
-		       	<td th:text="${literature.jenis_literatur}">Literature Jenis</td>
-		       	<td th:text="${literature.jumlah}">Literature Jumlah</td>
-			    <td><a onclick="return confirm('Are you sure?')" th:href="'/literature/hapus/' + ${literature.id}">Delete Data</a> || <a th:href="'/literatur/ubah/' + ${literature.id}">Edit Data</a></td>
-		       
-	       	</tr> 
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                		 <div class="card-body">
+			<form   method="post" action="/literatur/ubah/submit" th:object="${literature}">
+				 
+				<div class="divider col s12 l6"></div>
+				<br/>
+				<div class="row">
+					<div class="input-field col s12 l3">
+						<input  id="id" class="validate" type="hidden" name="id" th:field="${literature.id}"  />
+					 
+					</div>
+				</div>
+				 
+				 <div class="row">
+										 	<div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Judul Buku</label>
+                                                    <input type="text" class="form-control" name="judul" readonly="readonly" id="judul" th:field="${literature.judul}"/>
+                                                </div>
+                                            </div>
+										</div>
+				 <div class="row">
+										 	<div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Penulis</label>
+                                                    <input type="text" class="form-control" name="penulis" readonly="readonly" id="penulis" th:field="${literature.penulis}"/>
+                                                </div>
+                                            </div>
+										</div>
+				 <div class="row">
+										 	<div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Penerbit</label>
+                                                    <input type="text" class="form-control" name="penerbit" readonly="readonly" id="penerbit" th:field="${literature.penerbit}"/>
+                                                </div>
+                                            </div>
+										</div>
+				<div class="row">
+										 	<div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Jenis Literature</label>
+                                                    <input type="text" class="form-control" name="jenis_literatur" readonly="readonly" id="jenis_literatur" th:field="${literature.jenis_literatur}"/>
+                                               
+                                                  </div>
+                                            </div>
+										</div>
+				<div class="row">
+										 	<div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Jumlah</label>
+                                                    <input type="number" class="form-control" name="jumlah" readonly="readonly" id="jumlah" th:field="${literature.jumlah}" />
+                                                </div>
+                                            </div>
+										</div>
+				 
+					 
+					<a class="btn" href="/literature/viewall">
+						Back
+					</a>
+			</form>
+		</div>
                 		  
                 	</div> 
-                	<div class="row">
-                	 <a class="btn btn-warning" href="/literature/add">
-                            Add New Literatur
-                        </a>
-                	</div>
+                	
                 </div>
             </div>
            <footer th:replace="fragments/footer :: footer">&copy; 2018 APAP</footer>
